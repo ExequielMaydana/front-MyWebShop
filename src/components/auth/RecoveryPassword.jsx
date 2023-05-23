@@ -2,10 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 
 const RecoveryPassword = () => {
-
   return (
     <section className="w-full flex flex-col items-center gap-5">
-      <h2 className="text-center text-black font-black text-2xl">
+      <h2 className="text-center text-black font-black text-2xl sm:text-3xl">
         Cambiar contraseña
       </h2>
 
@@ -57,14 +56,14 @@ const RecoveryPassword = () => {
           /* and other goodies */
         }) => (
           <form
-            className="w-11/12  p-5 rounded-xl flex flex-col gap-5 bg-midNightBlue text-whiteSmoke"
+            className="w-11/12  p-5 rounded-xl flex flex-col gap-5 bg-midNightBlue text-whiteSmoke md:w-4/5 xl:w-2/4"
             onSubmit={handleSubmit}
           >
-            <article className="w-full">
-              <h3 className="text-center font-extrabold text-xl">
+            <article className="w-full flex flex-col items-center">
+              <h3 className="text-center font-extrabold text-xl sm:text-1xl">
                 Recuperación de contraseña segura:
               </h3>
-              <p className="text-center text-xs text-slateGray">
+              <p className="text-center text-xs text-slateGray sm:text-sm sm:w-4/5 sm:text-center">
                 Por favor, completa el siguiente campo para recuperar tu
                 contraseña. Nos tomamos muy en serio la seguridad de tu cuenta y
                 queremos asegurarnos de que solo tú puedas acceder a ella.

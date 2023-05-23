@@ -14,7 +14,7 @@ const SignUp = () => {
 
   return (
     <section className="w-full flex flex-col items-center gap-5">
-      <h2 className="text-center text-black font-black text-2xl">Registro</h2>
+      <h2 className="text-center text-black font-black text-2xl sm:text-3xl">Registro</h2>
 
       <Formik
         initialValues={{
@@ -68,14 +68,14 @@ const SignUp = () => {
           /* and other goodies */
         }) => (
           <form
-            className="w-11/12  p-5  rounded-xl flex flex-col gap-4 bg-midNightBlue text-whiteSmoke"
+          className="w-11/12  p-5 rounded-xl flex flex-col gap-5 bg-midNightBlue text-whiteSmoke md:w-4/5 xl:w-2/4"
             onSubmit={handleSubmit}
           >
-            <article className="w-full">
-              <h3 className="text-center font-extrabold text-xl">
+            <article className="w-full flex flex-col items-center">
+              <h3 className="text-center font-extrabold text-xl sm:text-1xl">
                 Crear cuenta
               </h3>
-              <p className="text-center text-xs text-slateGray">
+              <p className="text-center text-xs text-slateGray sm:text-sm sm:w-4/5 sm:text-center">
                 La seguridad de tus datos es nuestra máxima prioridad. Puedes
                 estar tranquilo/a al completar el formulario de registro, ya que
                 implementamos medidas de seguridad robustas para proteger tu
@@ -248,7 +248,7 @@ const SignUp = () => {
             </div>
             <div className="relative w-full flex flex-col gap-1">
               <label className="text-darkGray text-sm" htmlFor="telefono">
-                Telefono
+                Teléfono
               </label>
               <input
                 className="
@@ -279,7 +279,7 @@ const SignUp = () => {
             >
               Crear cuenta
             </button>
-            <p className="w-full flex justify-center gap-2 text-xs">
+            <p className="w-full flex justify-center gap-2 text-xs sm:text-sm">
               ¿Ya tienes una cuenta?
               <Link href="/iniciar-sesion">Iniciar sesión</Link>
             </p>

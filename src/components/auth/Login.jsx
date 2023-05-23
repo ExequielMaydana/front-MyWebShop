@@ -14,7 +14,7 @@ const Login = () => {
 
   return (
     <section className="w-full flex flex-col items-center gap-5">
-      <h2 className="text-center text-black font-black text-2xl">
+      <h2 className="text-center text-black font-black text-2xl sm:text-3xl">
         ¡Bienvenido de nuevo!
       </h2>
 
@@ -66,14 +66,14 @@ const Login = () => {
           /* and other goodies */
         }) => (
           <form
-            className="w-11/12  p-5 rounded-xl flex flex-col gap-5 bg-midNightBlue text-whiteSmoke"
+            className="w-11/12  p-5 rounded-xl flex flex-col gap-5 bg-midNightBlue text-whiteSmoke md:w-4/5 xl:w-2/4"
             onSubmit={handleSubmit}
           >
-            <article className="w-full">
-              <h3 className="text-center font-extrabold text-xl">
+            <article className="w-full flex flex-col items-center">
+              <h3 className="text-center font-extrabold text-xl sm:text-1xl">
                 Inicio de sesión
               </h3>
-              <p className="text-center text-xs text-slateGray">
+              <p className="text-center text-xs text-slateGray sm:text-sm sm:w-4/5 sm:text-center">
                 Te pediremos que te autentiques con el fin de verificar tu
                 identidad y que el procedimiento sea seguro entre las partes.
               </p>
@@ -161,7 +161,7 @@ const Login = () => {
             >
               Iniciar sesión
             </button>
-            <p className="w-full flex justify-center gap-2 text-xs">
+            <p className="w-full flex justify-center gap-2 text-xs sm:text-sm">
               ¿No tenés cuenta aún?
               <Link href="/registrarse">
                 Crear cuenta

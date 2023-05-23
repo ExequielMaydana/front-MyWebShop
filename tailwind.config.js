@@ -20,6 +20,10 @@ module.exports = {
         // Puntos de interrupcion especiales.
         s: "350px",
         sm: "480px",
+        md: "768px",
+        lg: '976px',
+        xl: '1024px',
+        xxl: '1440px'
       },
     },
     colors: {
@@ -38,7 +42,7 @@ module.exports = {
     },
     fontSize: {
       //medidas xs, sm, lg, xl, xl, 2xl, 3xl...
-
+      xxs: "0.60rem",
       xs: "0.75rem",
       sm: "0.875rem",
       base: "1rem",
