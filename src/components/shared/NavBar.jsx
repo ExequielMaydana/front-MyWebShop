@@ -19,7 +19,7 @@ const NavBar = () => {
         <i className="fa-solid fa-truck-arrow-right"></i> ENVIO GRATIS DESDE{" "}
         <b>$25.000</b>
       </article>
-      <header className="w-full flex flex-col gap-y-2 bg-darkSlateGray px-3 py-2 z-10 header">
+      <header className="w-full flex flex-col gap-y-2 bg-darkSlateGray px-3 py-2 z-10 header lg:relative">
         {/* menu burguer / logo / icono cart */}
         <div className="w-full mb-1 pt-2 flex items-center justify-around">
           <i
@@ -46,8 +46,8 @@ const NavBar = () => {
             <i className="bx bx-search p-2 grid items-center text-center cursor-pointer bg-mediumPurple rounded-lg text-lg"></i>
           </div>
           <article className="flex items-center justify-center gap-2 text-white">
-            <Link href="/iniciar-sesion">
-              <i className="hidden fa-solid fa-circle-user cursor-pointe text-base s:text-2xl lg:block"></i>
+            <Link href="/iniciar-sesion" className="hidden lg:block">
+              <i className="fa-solid fa-circle-user cursor-pointe text-base s:text-2xl"></i>
             </Link>
             <Link href="/carrito" className="text-lg s:text-3xl mt-1">
               <i className="bx bx-cart cursor-pointer"></i>

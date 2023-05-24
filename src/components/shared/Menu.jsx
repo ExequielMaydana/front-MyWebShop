@@ -57,18 +57,18 @@ const Menu = ({ isOpen, token, openMenu }) => {
 
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
 
-        <ul className="w-full flex flex-col pl-3 gap-5 mb-1 text-white text-sm s:text-base lg:flex-row">
+        <ul className="w-full flex flex-col pl-3 gap-5 mb-1 text-white text-sm s:text-base lg:flex-row lg:gap-3">
           <li className="nav__item">
-            <Link href="/" className="flex gap-1" onClick={openMenu}>
+            <Link href="/" className="flex gap-1 lg:text-sm" onClick={openMenu}>
               Inicio
             </Link>
           </li>
           <li
-            className="nav__item overflow-hidden  "
+            className="nav__item overflow-hidden lg:relative"
             onClick={() => setOpenDropDownOne(!openDropDownOne)}
           >
             <div className="flex items-center gap-1">
-              <span> Indumentaria</span>
+              <span className="lg:text-sm"> Indumentaria</span>
               <article
                 className={openDropDownOne ? "icon__row-active" : "icon__row"}
               >
@@ -84,7 +84,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             onClick={() => setOpenDropDownShoes(!openDropDownShoes)}
           >
             <div className="flex items-center gap-1">
-              <span>Calzado</span>
+              <span className="lg:text-sm">Calzado</span>
 
               <article
                 className={openDropDownShoes ? "icon__row-active" : "icon__row"}
@@ -96,11 +96,11 @@ const Menu = ({ isOpen, token, openMenu }) => {
             <SubMenuShoes openDropDownShoes={openDropDownShoes} />
           </li>
           <li
-            className="nav__item "
+            className="nav__item"
             onClick={() => setOpenDropDownAccesories(!openDropDownAccesories)}
           >
             <div className="flex items-center gap-1">
-              <span>Accesorios</span>
+              <span className="lg:text-sm"> Accesorios</span>
               <article
                 className={
                   openDropDownAccesories ? "icon__row-active" : "icon__row"
@@ -119,7 +119,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             onClick={() => setOpenDropDownMarket(!openDropDownMarket)}
           >
             <div className="flex items-center gap-1">
-              <span>Marcas</span>
+              <span className="lg:text-sm">Marcas</span>
               <article
                 className={
                   openDropDownMarket ? "icon__row-active" : "icon__row"
@@ -137,7 +137,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             onClick={() => setOpenDropDownOffers(!openDropDownOffers)}
           >
             <div className="flex items-center gap-1">
-              <span>Ofertas</span>
+              <span className="lg:text-sm">Ofertas</span>
               <article
                 className={
                   openDropDownOffers ? "icon__row-active" : "icon__row"
@@ -153,16 +153,16 @@ const Menu = ({ isOpen, token, openMenu }) => {
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
       </nav>
 
-      <div className="w-full flex flex-col items-start gap-2 pb-1 text-white font-light text-sm s:text-base lg:w-auto lg:flex-row lg:relative lg:bottom-0 lg:justify-center">
+      <div className="w-full flex flex-col items-start gap-2 pb-1 text-white font-light text-sm s:text-base lg:absolute top-0 right-0 lg:w-auto lg:flex-row lg:justify-center lg:text-sm">
         {" "}
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 mb-1 lg:hidden" />
         <Link
           href="#"
-          className="flex pl-3 gap-1 items-center justify-center "
+          className="flex pl-3 gap-1 items-center justify-center"
           onClick={openMenu}
         >
-          <i className="fa-solid fa-circle-user"></i>
-          Mi cuenta
+          <i className="fa-solid fa-user-tie"></i>
+          Sobre nosotros
         </Link>
         <Link
           href="#"
