@@ -104,11 +104,6 @@ a {
     rotate: 90deg;
   }
 
-  .sub__menu-open {
-    height: auto;
-    padding-left: 1em;
-  }
-
   @keyframes menu-in {
     0% {
       clip-path: ellipse(60% 60% at 0% 50%);
@@ -133,17 +128,38 @@ a {
 
     .nav {
       position: relative;
-      width: auto;
+      width: 100%;
       opacity: 1;
-      display: grid;
-      place-items: center;
-      justify-content: center;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
       gap: 1;
     }
 
     .nav__item {
       position: relative;
       width: auto;
+    }
+
+
+
+    .sub__menu {
+      position: absolute;
+      top: 0;
+      height: 0px;
+      overflow: hidden;
+    }
+
+    .sub__menu-open {
+      width: auto;
+      height: 200px;
+      padding-left: 0;
+      font-size: 0.875rem;
+      overflow-y: auto;
+    }
+
+    .sub__menu-open::-webkit-scrollbar {
+      display: none;
     }
   }
 }

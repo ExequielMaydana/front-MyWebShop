@@ -6,7 +6,12 @@ const SubMenuAccessories = ({ openDropDownAccesories }) => {
     <ul className={openDropDownAccesories ? "sub__menu-open" : "sub__menu"}>
       <li>
         <Link href="#" className="w-full h-full">
-          Mochilas / Riñoneras
+          Mochilas
+        </Link>
+      </li>
+      <li>
+        <Link href="#" className="w-full h-full">
+        Riñoneras
         </Link>
       </li>
       <li>
