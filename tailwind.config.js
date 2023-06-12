@@ -40,6 +40,7 @@ module.exports = {
       whiteSmoke: "#f3f4f6",
       mediumPurple: "#a78bfa",
       error: "#b00020",
+      blackMy: "#17181C"
     },
     fontSize: {
       //medidas xs, sm, lg, xl, xl, 2xl, 3xl...

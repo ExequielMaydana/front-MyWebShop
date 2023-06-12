@@ -1,8 +1,18 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import Products from "@/components/products/Products";
+import SliderImagesTop from "@/components/slider/SliderImagesTop";
+import WeOffer from "@/components/others/WeOffer";
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const getImagesSlider = await fetch(
+    `${process.env.DOMAIN_PROD}/api/v1/images`
+  );
+  const imagesSlider = await getImagesSlider.json();
+  return { props: { imagesSlider } };
+};
+
+export default function Home({ imagesSlider }) {
+
 
   return (
     <>
@@ -21,7 +31,8 @@ export default function Home() {
         <title>GreedyShop</title>
       </Head>
       <main className={styles.main}>
-        <Products/>
+        <SliderImagesTop images={imagesSlider?.images} />
+        <WeOffer/>
       </main>
     </>
   );

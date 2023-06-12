@@ -41,7 +41,7 @@ const SignUp = () => {
           return errors;
         }}
         onSubmit={(values) => {
-          const URL = `${process.env.NEXT_PUBLIC_DOMAIN_DEV}/api/v1/auth/iniciar-sesion`;
+          const URL = `${process.env.DOMAIN_PROD}/api/v1/auth/registrarse`;
           axios
             .post(URL, values)
             .then((res) => {
@@ -68,7 +68,7 @@ const SignUp = () => {
           /* and other goodies */
         }) => (
           <form
-          className="w-11/12  p-5 rounded-xl flex flex-col gap-5 bg-midNightBlue text-whiteSmoke md:w-4/5 xl:w-2/4"
+          className="w-11/12  p-5 rounded-xl flex flex-col gap-5 bg-blackMy text-whiteSmoke md:w-4/5 xl:w-2/4"
             onSubmit={handleSubmit}
           >
             <article className="w-full flex flex-col items-center">
@@ -93,7 +93,7 @@ const SignUp = () => {
               rounded-md 
               py-2
               ps-2
-              bg-midNightBlue border 
+              bg-blackMy border 
               border-slateGray
               text-white
               "
@@ -120,7 +120,7 @@ const SignUp = () => {
               rounded-md 
               py-2
               ps-2
-              bg-midNightBlue border 
+              bg-blackMy border 
               border-slateGray
               text-white
               "
@@ -148,7 +148,7 @@ const SignUp = () => {
                 rounded-md 
                 py-2
                 ps-2
-                bg-midNightBlue border 
+                bg-blackMy border 
                 border-slateGray
                 text-white
                 "
@@ -191,7 +191,7 @@ const SignUp = () => {
                 rounded-md 
                 py-2
                 ps-2
-                bg-midNightBlue border 
+                bg-blackMy border 
                 border-slateGray
                 text-white
                 "
@@ -229,7 +229,7 @@ const SignUp = () => {
                 rounded-md 
                 py-2
                 ps-2
-                bg-midNightBlue border 
+                bg-blackMy border 
                 border-slateGray
                 text-white
                 "
@@ -256,7 +256,7 @@ const SignUp = () => {
                 rounded-md 
                 py-2
                 ps-2
-                bg-midNightBlue border 
+                bg-blackMy border 
                 border-slateGray
                 text-white
                 "

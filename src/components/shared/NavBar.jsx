@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <>
       <article className="w-full h-10 bg-gray flex items-center justify-center gap-2 text-white">
-        <i className="fa-solid fa-truck-arrow-right"></i> ENVIO GRATIS DESDE{" "}
+        <i className="fa-solid fa-truck-arrow-right"></i> ENVIÓ GRATIS DESDE{" "}
         <b>$25.000</b>
       </article>
       <header className="w-full flex flex-col gap-y-2 bg-darkSlateGray px-3 py-2 z-10 header lg:relative">
@@ -47,7 +47,7 @@ const NavBar = () => {
           </div>
           <article className="flex items-center justify-center gap-2 text-white">
             <Link href="/iniciar-sesion" className="hidden lg:block">
-              <i className="fa-solid fa-circle-user cursor-pointe text-base s:text-2xl"></i>
+              <i className="bx bx-user-circle cursor-pointe text-base s:text-2xl lg:mt-1 lg:text-3xl"></i>
             </Link>
             <Link href="/carrito" className="text-lg s:text-3xl mt-1">
               <i className="bx bx-cart cursor-pointer"></i>

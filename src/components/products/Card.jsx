@@ -1,13 +1,17 @@
 import React from 'react'
-import styles from '../../styles/Products.module.css'
 
-const Card = ({}) => {
+const Card = ({products}) => {
 
-
+  console.log(products);
   return (
-    <article className={styles.card}>
-        <figure className={styles.card__ctrImg}>
+    <article className="">
+        <figure className="">
+          <img src='' alt='imagen producto' className=''/>
         </figure>
+        <div>
+        <h3></h3>
+        <p></p>
+        </div>
     </article>
   )
 }
