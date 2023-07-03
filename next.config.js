@@ -10,8 +10,8 @@ const nextConfig = {
     ],
   },
   env: {
-    DOMAIN_PROD: "https://greedyshop.onrender.com",
-    DOMAIN_DEV: "http://localhost:8000",
+    DOMAIN_PROD: "http://localhost:8000",
+    DOMAIN_DEV: "//greedyshop.onrender.com"
   },
 };
 

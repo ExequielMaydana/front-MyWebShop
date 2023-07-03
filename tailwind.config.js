@@ -20,17 +20,19 @@ module.exports = {
         // Puntos de interrupcion especiales.
         s: "350px",
         sm: "480px",
+        smm: "640px",
         md: "768px",
-        lg: '976px',
-        xl: '1024px',
-        xxl: '1440px'
+        lg: "976px",
+        xl: "1024px",
+        xlmy: "1280px",
+        xxl: "1440px",
       },
     },
     colors: {
       white: "#f9fafb",
       black: "#09090b",
       aliceBlue: "#eef2ff",
-      gray: '#404040',
+      gray: "#404040",
       darkSlateGray: "#27272a",
       dimGray: "#52525b",
       slateGray: "#D3D3D3",
@@ -40,7 +42,16 @@ module.exports = {
       whiteSmoke: "#f3f4f6",
       mediumPurple: "#a78bfa",
       error: "#b00020",
-      blackMy: "#17181C"
+      blackMy: "#17181C",
+      tras: "transparent",
+      indigoEight: "#4338ca",
+      indigoSeven: "#4338ca",
+
+      // nuevos colores login
+      slateBlue: "#4D47C3",
+      lightSlateBlue: "#A7A3FF",
+      aliceBlueTwo: "#F0EFFF",
+      darkGrayTwo: "#B0B0B0"
     },
     fontSize: {
       //medidas xs, sm, lg, xl, xl, 2xl, 3xl...
@@ -59,6 +70,10 @@ module.exports = {
       "7xl": "4.5rem",
       "8xl": "6rem",
       "9xl": "8rem",
+    },
+    boxShadow: {
+      lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      custom: "0px 4px 61px 0px rgba(77, 71, 195, 0.40)",
     },
   },
   plugins: [],

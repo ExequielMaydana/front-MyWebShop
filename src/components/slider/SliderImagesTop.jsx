@@ -18,7 +18,7 @@ const SliderImagesTop = ({ images }) => {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 5000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -35,7 +35,7 @@ const SliderImagesTop = ({ images }) => {
                 <img
                   src={img.imageURL || ""}
                   alt="imagen slider"
-                  className="w-full h-full"
+                  className="w-full h-full object-cover"
                 />
               </figure>
             </SwiperSlide>

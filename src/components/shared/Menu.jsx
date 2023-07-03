@@ -1,36 +1,59 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { setToken } from "@/store/slices/tokenSlice.slice";
 import { useRouter } from "next/router";
 import SubMenusClothing from "./SubMenusClothing";
 import SubMenuMarkets from "./SubMenuMarkets";
 import SubMenuOffers from "./SubMenuOffers";
 import SubMenuShoes from "./SubMenuShoes";
 import SubMenuAccessories from "./SubMenuAccessories";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Menu = ({ isOpen, token, openMenu }) => {
+  const [dataUser, setDataUser] = useState([]);
+  const [aTokenExists, setATokenExists] = useState(false);
   const [openDropDownOne, setOpenDropDownOne] = useState(false);
   const [openDropDownMarket, setOpenDropDownMarket] = useState(false);
   const [openDropDownOffers, setOpenDropDownOffers] = useState(false);
   const [openDropDownShoes, setOpenDropDownShoes] = useState(false);
   const [openDropDownAccesories, setOpenDropDownAccesories] = useState(false);
 
-  const dispath = useDispatch();
   const router = useRouter();
 
   const logOut = () => {
-    dispath(setToken({ tokenUser: "" }));
+    Cookies.remove("tokenUser");
     router.push("/");
   };
+
+  const getMyUser = async () => {
+    try {
+      if (token) {
+        await axios
+          .get(`${process.env.DOMAIN_PROD}/api/v1/usuarios/me`, {
+            headers: { "x-access-token": token },
+          })
+          .then((res) => {
+            setDataUser(res.data.myUser);
+            setATokenExists(true);
+          });
+      }
+    } catch (error) {
+      console.log("error en peticion GET a MyUser", error);
+    }
+  };
+
+  useEffect(() => {
+    getMyUser();
+  }, [token]);
 
   return (
     <section className={isOpen ? `menu__open menu` : "menu"}>
       <nav className={isOpen ? `nav__open nav` : "nav"}>
         {/* este div desaparece a los 976px */}
-        <div className="w-full flex items-center justify-between pt-8 pl-3 gap-4 lg:hidden">
-          {token ? null : (
-            <article className="w-4/5 flex flex-wrap items-center gap-3">
+        <article className="w-full flex items-center justify-between pt-8 pl-3 gap-4 lg:hidden">
+          {!aTokenExists ? (
+            <div className="w-4/5 flex flex-wrap items-center gap-3">
               <Link
                 href="/iniciar-sesion"
                 className="flex items-center gap-1 text-white text-sm s:text-base"
@@ -47,13 +70,18 @@ const Menu = ({ isOpen, token, openMenu }) => {
                 <i className="fa-solid fa-user-plus"></i>
                 Registrarse
               </Link>
-            </article>
+            </div>
+          ) : (
+            <div className="w-full flex flex-col text-white text-sm">
+              <span>{dataUser[0]?.full_name}</span>
+              <span>{dataUser[0]?.email}</span>
+            </div>
           )}
           <i
             className="bx bx-arrow-back absolute right-2 cursor-pointer text-lg text-white s:text-xl"
             onClick={openMenu}
           ></i>
-        </div>
+        </article>
 
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
 
@@ -156,6 +184,16 @@ const Menu = ({ isOpen, token, openMenu }) => {
       <div className="w-full flex flex-col items-start gap-2 pb-1 text-white font-light text-sm s:text-base lg:absolute top-0 right-0 lg:w-auto lg:flex-row lg:justify-center lg:text-sm">
         {" "}
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 mb-1 lg:hidden" />
+        {dataUser[0]?.roles.map((role) => role.name.includes("admin")) && (
+          <Link
+            href="/dashboard"
+            className="flex pl-3 gap-1 items-center justify-center"
+            onClick={openMenu}
+          >
+            <i className="bx bxs-dashboard"></i>
+            Dashboard
+          </Link>
+        )}
         <Link
           href="#"
           className="flex pl-3 gap-1 items-center justify-center"
@@ -164,26 +202,18 @@ const Menu = ({ isOpen, token, openMenu }) => {
           <i className="fa-solid fa-user-tie"></i>
           Sobre nosotros
         </Link>
-        <Link
-          href="#"
-          className="flex pl-3 gap-1 items-center justify-center "
-          onClick={openMenu}
-        >
-          <i className="fa-solid fa-boxes-packing"></i>
-          Mis compras
-        </Link>
         <Link href="#" className="flex pl-3 gap-1 items-center justify-center ">
           <i className="fa-regular fa-circle-question"></i>
           Ayuda
         </Link>
-        {token ? (
+        {aTokenExists && (
           <button
             className="border-none flex items-center pl-3 gap-1 outline-none transparent"
             onClick={logOut}
           >
             <i className="fa-solid fa-right-from-bracket"></i> Cerrar sesión
           </button>
-        ) : null}
+        )}
       </div>
     </section>
   );
