@@ -52,9 +52,7 @@ const ListOrders = () => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200 text-darkSlateGray">
           <tr className="text-base">
-            <td className="px-6 py-4 whitespace-nowrap flex gap-1">
-              1
-            </td>
+            <td className="px-6 py-4 whitespace-nowrap flex gap-1">1</td>
             <td className="px-6 py-4 whitespace-nowrap">70d4d7d0</td>
             <td className="px-6 py-4 whitespace-nowrap">muñequita bullock</td>
             <td className="px-6 py-4 whitespace-nowrap">$10.00</td>

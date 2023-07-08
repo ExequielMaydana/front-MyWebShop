@@ -1,6 +1,4 @@
 import React from "react";
-import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
-import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 
 const ListProducs = () => {
   return (
@@ -47,8 +45,8 @@ const ListProducs = () => {
         <tbody className="bg-white divide-y divide-gray-200 text-darkSlateGray">
           <tr className="text-base">
             <td className="px-6 py-4 whitespace-nowrap flex gap-1">
-              <RestoreFromTrashIcon className="text-error cursor-pointer" />
-              <CreateOutlinedIcon className="cursor-pointer" />
+              <i className="bx bx-trash text-error cursor-pointer text-xl"></i>
+              <i className="bx bx-edit-alt cursor-pointer text-xl"></i>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">Producto 1</td>
             <td className="px-6 py-4 whitespace-nowrap">Categoría 1</td>

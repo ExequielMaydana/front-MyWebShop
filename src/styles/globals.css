@@ -208,8 +208,18 @@ a {
     transform: translateX(100%);
   }
 
-  .colorPlace::placeholder{
-    color: #A7A3FF;
+  .colorPlace::placeholder {
+    color: #a7a3ff;
+  }
+
+  .inputNumber input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  .inputNumber input[type="number"]::-webkit-inner-spin-button,
+  .inputNumber input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Elimina el margen por defecto en Chrome */
   }
 
   @media screen and (min-width: 976px) {

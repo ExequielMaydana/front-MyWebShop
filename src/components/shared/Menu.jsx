@@ -123,7 +123,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
 
             <SubMenuShoes openDropDownShoes={openDropDownShoes} />
           </li>
-          <li
+          {/* <li
             className="nav__item"
             onClick={() => setOpenDropDownAccesories(!openDropDownAccesories)}
           >
@@ -141,7 +141,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             <SubMenuAccessories
               openDropDownAccesories={openDropDownAccesories}
             />
-          </li>
+          </li> */}
           <li
             className="nav__item "
             onClick={() => setOpenDropDownMarket(!openDropDownMarket)}
@@ -160,7 +160,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             {/* sub-menu -> Marcas */}
             <SubMenuMarkets openDropDownMarket={openDropDownMarket} />
           </li>
-          <li
+          {/* <li
             className="nav__item "
             onClick={() => setOpenDropDownOffers(!openDropDownOffers)}
           >
@@ -176,7 +176,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             </div>
 
             <SubMenuOffers openDropDownOffers={openDropDownOffers} />
-          </li>
+          </li> */}
         </ul>
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
       </nav>
