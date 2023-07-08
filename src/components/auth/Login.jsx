@@ -26,7 +26,7 @@ const Login = () => {
           </p>
           <p className="w-full flex justify-center gap-2 text-darkGrayTwo text-xs sm:text-sm">
             ¿No tenés cuenta aún?
-            <Link href="/registrarse" className="text-slateBlue">
+            <Link href="/registrarse" className="text-slateBlue z-10">
               Crear cuenta
             </Link>
           </p>
