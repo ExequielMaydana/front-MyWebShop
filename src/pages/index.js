@@ -2,17 +2,13 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import SliderImagesTop from "@/components/slider/SliderImagesTop";
 import WeOffer from "@/components/others/WeOffer";
-
-export const getServerSideProps = async () => {
-  const getImagesSlider = await fetch(
-    `${process.env.DOMAIN_PROD}/api/v1/images`
-  );
-  const imagesSlider = await getImagesSlider.json();
-  return { props: { imagesSlider } };
-};
+import NavBar from "@/components/shared/NavBar";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 export default function Home({ imagesSlider }) {
 
+  // Cookies.remove("tokenUser");
 
   return (
     <>
@@ -31,9 +27,21 @@ export default function Home({ imagesSlider }) {
         <title>GreedyShop</title>
       </Head>
       <main className={styles.main}>
-        <SliderImagesTop images={imagesSlider?.images} />
-        <WeOffer/>
+        <NavBar />
+        <section className={styles.contentHome}>
+          <SliderImagesTop images={imagesSlider?.images} />
+          <WeOffer />
+        </section>
       </main>
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const getImagesSlider = await fetch(
+    `${process.env.DOMAIN_PROD}/api/v1/images`
+  );
+  const imagesSlider = await getImagesSlider.json();
+
+  return { props: { imagesSlider } };
+};

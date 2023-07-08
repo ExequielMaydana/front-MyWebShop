@@ -14,7 +14,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background-color: #f9fafb;
+  background-color: #fff;
 }
 
 #__next {
@@ -61,6 +61,26 @@ a {
     display: none;
   }
 
+  .menuDash {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: min(100%, 300px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--darkSlateGray);
+    translate: -100% 0;
+    transition: translate 0.375s cubic-bezier(0.175, 0.885, 0.32, 1);
+    overflow-y: auto;
+  }
+
+  .menuDash::-webkit-scrollbar {
+    display: none;
+  }
+
   .menu__open {
     opacity: 1;
     visibility: visible;
@@ -77,9 +97,19 @@ a {
     gap: 2em;
   }
 
+  .navDash {
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+
   .nav__open {
     width: 100%;
     opacity: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .nav__item {
@@ -135,6 +165,63 @@ a {
     object-fit: cover;
   }
 
+  .switch {
+    font-size: 24px;
+  }
+
+  .switch .switch-content {
+    position: relative;
+    display: inline-block;
+    width: 2em;
+    height: 1em;
+  }
+  .switch .switch-content::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    content: "";
+    border-radius: 0.5em;
+    background: currentColor;
+    opacity: 0.25;
+    transition: opacity 0.2s;
+  }
+  .switch .switch-content::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    content: "";
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background: currentColor;
+    transition: transform 0.2s;
+  }
+  .switch input:checked + .switch-content::before {
+    opacity: 0.75;
+    background-color: #a78bfa;
+  }
+  .switch input:checked + .switch-content::after {
+    transform: translateX(100%);
+  }
+
+  .colorPlace::placeholder {
+    color: #a7a3ff;
+  }
+
+  .inputNumber input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  .inputNumber input[type="number"]::-webkit-inner-spin-button,
+  .inputNumber input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Elimina el margen por defecto en Chrome */
+  }
+
   @media screen and (min-width: 976px) {
     .menu {
       position: relative;
@@ -180,6 +267,10 @@ a {
 
     .sub__menu-open::-webkit-scrollbar {
       display: none;
+    }
+
+    .swiper {
+      height: 400px;
     }
   }
 }

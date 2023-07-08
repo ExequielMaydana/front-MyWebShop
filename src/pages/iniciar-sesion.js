@@ -1,13 +1,16 @@
 import React from "react";
 import Login from "@/components/auth/Login";
+import NavBar from "@/components/shared/NavBar";
 
 const iniciarSesion = () => {
   return (
     <>
-      <div className="pb-20 mt-10 w-full min-h-screen">
-        {" "}
-        <Login />
-      </div>
+      <section className="w-full min-h-screen">
+        <NavBar />
+        <article className="w-full mt-10">
+          <Login />
+        </article>
+      </section>
     </>
   );
 };

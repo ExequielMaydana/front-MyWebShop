@@ -3,11 +3,11 @@ import Image from "next/image";
 import logoType from "../../../public/logotypes/greedy-logotype.webp";
 import Link from "next/link";
 import Menu from "./Menu";
-import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const token = useSelector((state) => state.credential.tokenUser);
+  const token = Cookies.get("tokenUser");
 
   const openMenu = () => {
     setIsOpen(!isOpen);
