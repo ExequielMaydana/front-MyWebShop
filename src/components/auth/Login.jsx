@@ -90,7 +90,6 @@ const Login = () => {
             handleChange,
             handleBlur,
             handleSubmit,
-            /* and other goodies */
           }) => (
             <form
               className="max-w-[450px] lg:w-[400px] p-5 rounded-xl flex flex-col gap-8 lg:gap-12"

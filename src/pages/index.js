@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 
 export default function Home({ imagesSlider }) {
-
   // Cookies.remove("tokenUser");
 
   return (
