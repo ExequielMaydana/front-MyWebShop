@@ -28,19 +28,17 @@ const SliderImagesTop = ({ images }) => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <article className="w-full h-[300px] relative">
-          {filteredImg?.map((img) => (
-            <SwiperSlide key={img._id}>
-              <figure className="w-full h-full">
-                <img
-                  src={img.imageURL || ""}
-                  alt="imagen slider"
-                  className="w-full h-full object-cover"
-                />
-              </figure>
-            </SwiperSlide>
-          ))}
-        </article>
+        {filteredImg?.map((img) => (
+          <SwiperSlide key={img._id}>
+            <figure className="w-full h-full">
+              <img
+                src={img.imageURL || ""}
+                alt="imagen slider"
+                className="w-full h-full object-contain"
+              />
+            </figure>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

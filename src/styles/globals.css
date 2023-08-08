@@ -11,15 +11,20 @@
 }
 
 body {
+  width: 100%;
   padding: 0;
   margin: 0;
   font-family: "Poppins", sans-serif;
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #__next {
   width: 100%;
   height: 100vh;
+  max-width: 1500px;
 }
 
 h1,
@@ -40,6 +45,11 @@ a {
   text-decoration: none;
 }
 
+.mySwiper{
+  max-width: 100%;
+  overflow: hidden;
+}
+
 @layer utilities {
   .menu {
     position: fixed;
@@ -50,7 +60,7 @@ a {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 2em;
     background-color: var(--darkSlateGray);
     translate: -100% 0;
     transition: translate 0.375s cubic-bezier(0.175, 0.885, 0.32, 1);
@@ -143,11 +153,6 @@ a {
     }
   }
 
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-
   .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -156,13 +161,6 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   .switch {
@@ -270,9 +268,19 @@ a {
     }
 
     .swiper {
-      height: 400px;
+      width: 100%;
+      height: 500px;
     }
   }
+}
+
+.mySwiper{
+  width: 100%;
+  height: 100%;
+}
+
+.logo_mp{
+  filter: drop-shadow(-2px 2px 4px #fff);
 }
 
 .swiper-button-prev,
@@ -285,7 +293,3 @@ a {
 .swiper-pagination-bullet-active {
   background-color: #f3f4f6 !important;
 }
-/* .bx-log-out-circle,
-.bx-help-circle {
-  font-size: 1.3em;
-} */

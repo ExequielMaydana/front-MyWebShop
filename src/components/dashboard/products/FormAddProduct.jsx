@@ -38,7 +38,6 @@ const MenuProps = {
   },
 };
 
-// colores
 const colors = ["Blanco", "Negro", "Amarillo", "Verde", "Gris"];
 const sizes = ["7", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5"];
 const tags = ["Oversize", "Ropa comoda", "Casual", "Moda", "Formal"];

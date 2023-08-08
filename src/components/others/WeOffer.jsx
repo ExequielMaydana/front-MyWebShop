@@ -8,8 +8,8 @@ import packing from "../../../public/icons/package.webp";
 const WeOffer = () => {
   return (
     <section className="w-full flex flex-col items-center justify-center gap-5 mb-8 lg:flex-row xl:justify-evenly md:flex-row md:flex-wrap">
-      <article className="w-[80%] h-[150px] flex items-center justify-center gap-3 border border-darkSlateGray rounded-lg sm:w-[300px]">
-        <figure className="w-full h-[60%]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[300px]">
+        <figure className="w-full h-[90px]">
           <Image
             src={iconTruck || ""}
             loading="lazy"
@@ -24,8 +24,8 @@ const WeOffer = () => {
           </p>
         </div>
       </article>
-      <article className="w-[80%] h-[150px] flex items-center justify-center gap-3 border border-darkSlateGray rounded-lg sm:w-[300px]">
-        <figure className="w-full h-[60%]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[300px]">
+        <figure className="w-full h-[80px]">
           <Image
             src={card || ""}
             loading="lazy"
@@ -40,8 +40,8 @@ const WeOffer = () => {
           </p>
         </div>
       </article>
-      <article className="w-[80%] h-[150px] flex items-center justify-center gap-3 border border-darkSlateGray rounded-lg sm:w-[300px]">
-        <figure className="w-full h-[60%]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[300px]">
+        <figure className="w-full h-[80px]">
           <Image
             src={security || ""}
             loading="lazy"
@@ -54,8 +54,8 @@ const WeOffer = () => {
           <p className="text-darkSlateGray">Nosotros te cuidamos. </p>
         </div>
       </article>
-      <article className="w-[80%] h-[150px] flex items-center justify-center gap-3 border border-darkSlateGray rounded-lg sm:w-[300px]">
-        <figure className="w-full h-[60%]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[300px]">
+        <figure className="w-full h-[80px]">
           <Image
             src={packing || ""}
             loading="lazy"

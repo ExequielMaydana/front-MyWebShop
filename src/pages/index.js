@@ -5,10 +5,11 @@ import WeOffer from "@/components/others/WeOffer";
 import NavBar from "@/components/shared/NavBar";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+import Footer from "@/components/shared/Footer";
+import CardStart from "@/components/cards/CardStart";
 
 export default function Home({ imagesSlider }) {
   // Cookies.remove("tokenUser");
-
   return (
     <>
       <Head>
@@ -23,14 +24,20 @@ export default function Home({ imagesSlider }) {
         />
         <meta name="author" content="ExeDev" />
         <link rel="icon" href="" />
-        <title>GreedyShop</title>
+        <title>CloseWithoutGender</title>
       </Head>
       <main className={styles.main}>
         <NavBar />
         <section className={styles.contentHome}>
           <SliderImagesTop images={imagesSlider?.images} />
           <WeOffer />
+          <article className="w-full flex flex-wrap items-center justify-around gap-4 p-4 mb-8">
+            <CardStart img="/Images/1.png" />
+            <CardStart img="/Images/2.png" />
+            <CardStart img="/Images/4.png" />
+          </article>
         </section>
+        <Footer />
       </main>
     </>
   );

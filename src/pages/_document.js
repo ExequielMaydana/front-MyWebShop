@@ -26,20 +26,12 @@ export default function Document() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-
-
-        {/* boxicons */}
         <link
           href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
           rel="stylesheet"
         />
       </Head>
       <body>
-        <Script
-          src="https://kit.fontawesome.com/ef487b269e.js"
-          crossOrigin="anonymous"
-          strategy="beforeInteractive"
-        ></Script>
         <Main />
         <NextScript />
       </body>

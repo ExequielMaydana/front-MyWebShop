@@ -51,7 +51,7 @@ module.exports = {
       slateBlue: "#4D47C3",
       lightSlateBlue: "#A7A3FF",
       aliceBlueTwo: "#F0EFFF",
-      darkGrayTwo: "#B0B0B0"
+      darkGrayTwo: "#B0B0B0",
     },
     fontSize: {
       //medidas xs, sm, lg, xl, xl, 2xl, 3xl...

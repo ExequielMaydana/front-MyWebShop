@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <>
       <article className="w-full h-10 bg-gray flex items-center justify-center gap-2 text-white">
-        <i className="fa-solid fa-truck-arrow-right"></i> ENVIÓ GRATIS DESDE{" "}
+        <i className="bx bxs-truck text-2xl"></i> ENVIÓ GRATIS DESDE{" "}
         <b>$25.000</b>
       </article>
       <header className="w-full flex flex-col gap-y-2 bg-darkSlateGray px-3 py-2 z-10 header lg:relative">
@@ -27,10 +27,12 @@ const NavBar = () => {
             onClick={openMenu}
           ></i>
 
-          <figure className="w-48">
+          <figure className="w-[250px]">
             <Link href="/">
               <Image
-                src={logoType}
+                width={500}
+                height={500}
+                src="/logotypes/logo.png"
                 alt="imagen logo"
                 className="w-full h-full object-contain"
               />
@@ -46,9 +48,6 @@ const NavBar = () => {
             <i className="bx bx-search p-2 grid items-center text-center cursor-pointer bg-mediumPurple rounded-lg text-lg"></i>
           </div>
           <article className="flex items-center justify-center gap-2 text-white">
-            <Link href="/iniciar-sesion" className="hidden lg:block">
-              <i className="bx bx-user-circle cursor-pointe text-base s:text-2xl lg:mt-1 lg:text-3xl"></i>
-            </Link>
             <Link href="/carrito" className="text-lg s:text-3xl mt-1">
               <i className="bx bx-cart cursor-pointer"></i>
             </Link>

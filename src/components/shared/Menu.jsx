@@ -50,41 +50,10 @@ const Menu = ({ isOpen, token, openMenu }) => {
   return (
     <section className={isOpen ? `menu__open menu` : "menu"}>
       <nav className={isOpen ? `nav__open nav` : "nav"}>
-        {/* este div desaparece a los 976px */}
-        <article className="w-full flex items-center justify-between pt-8 pl-3 gap-4 lg:hidden">
-          {!aTokenExists ? (
-            <div className="w-4/5 flex flex-wrap items-center gap-3">
-              <Link
-                href="/iniciar-sesion"
-                className="flex items-center gap-1 text-white text-sm s:text-base"
-                onClick={openMenu}
-              >
-                <i className="fa-solid fa-user"></i>
-                Iniciar sesión
-              </Link>
-              <Link
-                href="/registrarse"
-                className="flex items-center gap-1 text-white text-sm s:text-base"
-                onClick={openMenu}
-              >
-                <i className="fa-solid fa-user-plus"></i>
-                Registrarse
-              </Link>
-            </div>
-          ) : (
-            <div className="w-full flex flex-col text-white text-sm">
-              <span>{dataUser[0]?.full_name}</span>
-              <span>{dataUser[0]?.email}</span>
-            </div>
-          )}
-          <i
-            className="bx bx-arrow-back absolute right-2 cursor-pointer text-lg text-white s:text-xl"
-            onClick={openMenu}
-          ></i>
-        </article>
-
-        <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
-
+        <i
+          className="bx bx-arrow-back text-end p-4 cursor-pointer text-lg text-white s:text-xl lg:hidden"
+          onClick={openMenu}
+        ></i>
         <ul className="w-full flex flex-col pl-3 gap-5 mb-1 text-white text-sm s:text-base lg:flex-row lg:gap-3">
           <li className="nav__item">
             <Link href="/" className="flex gap-1 lg:text-sm" onClick={openMenu}>
@@ -183,17 +152,6 @@ const Menu = ({ isOpen, token, openMenu }) => {
 
       <div className="w-full flex flex-col items-start gap-2 pb-1 text-white font-light text-sm s:text-base lg:absolute top-0 right-0 lg:w-auto lg:flex-row lg:justify-center lg:text-sm">
         {" "}
-        <hr className="w-4/5 border-solid	border-slateGray opacity-25 mb-1 lg:hidden" />
-        {dataUser[0]?.roles.map((role) => role.name.includes("admin")) && (
-          <Link
-            href="/dashboard"
-            className="flex pl-3 gap-1 items-center justify-center"
-            onClick={openMenu}
-          >
-            <i className="bx bxs-dashboard"></i>
-            Dashboard
-          </Link>
-        )}
         <Link
           href="#"
           className="flex pl-3 gap-1 items-center justify-center"
@@ -206,14 +164,6 @@ const Menu = ({ isOpen, token, openMenu }) => {
           <i className="fa-regular fa-circle-question"></i>
           Ayuda
         </Link>
-        {aTokenExists && (
-          <button
-            className="border-none flex items-center pl-3 gap-1 outline-none transparent"
-            onClick={logOut}
-          >
-            <i className="fa-solid fa-right-from-bracket"></i> Cerrar sesión
-          </button>
-        )}
       </div>
     </section>
   );
