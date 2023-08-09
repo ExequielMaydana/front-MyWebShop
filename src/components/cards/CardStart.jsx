@@ -3,14 +3,14 @@ import React from "react";
 
 const CardStart = ({ img }) => {
   return (
-    <article className="w-[min(100%, 400px)] shadow shadow-lg">
+    <article className="shadow shadow-lg">
       <figure className="w-full h-full">
         <Image
           width={900}
           height={900}
           src={img || ""}
           alt="img"
-          className="min-w-[100px] max-w-[400px] rounded-md shadow shadow-lg"
+          className="min-w-[100px] max-w-[300px] rounded-md shadow shadow-lg"
         />
       </figure>
     </article>
