@@ -13,7 +13,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 const SliderImagesTop = ({ images }) => {
   const filteredImg = images?.filter((img) => img.position === "galery");
   return (
-    <section className="w-full flex items-center justify-center mb-8">
+    <section className="w-full flex items-center justify-center mb-24">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

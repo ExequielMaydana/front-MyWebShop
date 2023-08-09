@@ -7,9 +7,11 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import Footer from "@/components/shared/Footer";
 import CardStart from "@/components/cards/CardStart";
+import SectionProducts from "@/components/products/SectionProducts";
 
-export default function Home({ imagesSlider }) {
+export default function Home({ imagesSlider, products }) {
   // Cookies.remove("tokenUser");
+
   return (
     <>
       <Head>
@@ -31,11 +33,12 @@ export default function Home({ imagesSlider }) {
         <section className={styles.contentHome}>
           <SliderImagesTop images={imagesSlider?.images} />
           <WeOffer />
-          <article className="w-full flex flex-wrap items-center justify-around gap-4 p-4 mb-8">
+          <article className="w-full flex flex-wrap items-center justify-around gap-4 px-4 mb-24 lg:px-8">
             <CardStart img="/Images/1.png" />
             <CardStart img="/Images/2.png" />
             <CardStart img="/Images/4.png" />
           </article>
+          <SectionProducts data={products.producst} />
         </section>
         <Footer />
       </main>
@@ -49,5 +52,10 @@ export const getServerSideProps = async () => {
   );
   const imagesSlider = await getImagesSlider.json();
 
-  return { props: { imagesSlider } };
+  const getProducts = await fetch(
+    `${process.env.DOMAIN_PROD}/api/v1/productos`
+  );
+  const products = await getProducts.json();
+
+  return { props: { imagesSlider, products } };
 };

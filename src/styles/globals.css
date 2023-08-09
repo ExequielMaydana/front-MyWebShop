@@ -283,6 +283,10 @@ a {
   filter: drop-shadow(-2px 2px 4px #fff);
 }
 
+.scrollNone::-webkit-scrollbar {
+  display: none;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   color: #f3f4f6 !important;

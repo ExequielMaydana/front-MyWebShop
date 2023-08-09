@@ -35,8 +35,8 @@ const Footer = () => {
               onChange={(e) => setEmailUser(e.target.value)}
               className="w-full h-full rounded-md outline-none border-none"
             />
-            <div className="text-center bg-[#F1F5F9] rounded-md cursor-pointer absolute right-2 top-1">
-              <i className="bx bx-right-arrow-alt p-2"></i>
+            <div className="text-center bg-mediumPurple text-white text-xl rounded-md cursor-pointer absolute right-2 top-1">
+              <i className="bx bx-right-arrow-alt p-1"></i>
             </div>
           </label>
           <div className="flex items-center justify-center gap-2">
