@@ -2,7 +2,6 @@ import React from "react";
 import CardProductHome from "../cards/CardProductHome";
 
 const SectionProducts = ({ data }) => {
-  console.log(data);
   return (
     <section className="w-full flex flex-col center justify-center gap-4 mb-24 px-4 lg:px-8">
       <header className="w-full items-start justify-center">

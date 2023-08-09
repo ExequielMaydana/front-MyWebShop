@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import Footer from "@/components/shared/Footer";
 import CardStart from "@/components/cards/CardStart";
 import SectionProducts from "@/components/products/SectionProducts";
+import CardBrand from "@/components/cards/CardBrand";
 
 export default function Home({ imagesSlider, products }) {
   // Cookies.remove("tokenUser");
@@ -39,6 +40,14 @@ export default function Home({ imagesSlider, products }) {
             <CardStart img="/Images/4.png" />
           </article>
           <SectionProducts data={products.producst} />
+          <article className="w-full flex gap-4 overflow-x-scroll scrollNone px-4 lg:px-8 mb-24 xlmy:justify-center">
+            <CardBrand img="/logotypes_brands/logo_nike.png" />
+            <CardBrand img="/logotypes_brands/logo_adidas.png" />
+            <CardBrand img="/logotypes_brands/logo_vans.png" />
+            <CardBrand img="/logotypes_brands/logo_ripcurl.png" />
+            <CardBrand img="/logotypes_brands/logo_santacruz.png" />
+            <CardBrand img="/logotypes_brands/logo_trasher.png" />
+          </article>
         </section>
         <Footer />
       </main>

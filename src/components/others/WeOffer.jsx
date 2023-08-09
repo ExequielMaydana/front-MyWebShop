@@ -8,7 +8,7 @@ import packing from "../../../public/icons/package.webp";
 const WeOffer = () => {
   return (
     <section className="w-full flex flex-col items-center justify-center gap-5 mb-24 px-4  lg:flex-row lg:flex-wrap lg:justify-between lg:px-8">
-      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[280px]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 shadow-lg border border-slateGray rounded-md sm:w-[280px]">
         <figure className="w-full h-[90px]">
           <Image
             src={iconTruck || ""}
@@ -24,7 +24,7 @@ const WeOffer = () => {
           </p>
         </div>
       </article>
-      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[280px]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 shadow-lg border border-slateGray rounded-md sm:w-[280px]">
         <figure className="w-full h-[90px]">
           <Image
             src={card || ""}
@@ -40,7 +40,7 @@ const WeOffer = () => {
           </p>
         </div>
       </article>
-      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[280px]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 shadow-lg border border-slateGray rounded-md sm:w-[280px]">
         <figure className="w-full h-[90px]">
           <Image
             src={security || ""}
@@ -54,7 +54,7 @@ const WeOffer = () => {
           <p className="text-darkSlateGray">Nosotros te cuidamos. </p>
         </div>
       </article>
-      <article className="w-[80%] flex items-center justify-center gap-2 p-2 border border-darkSlateGray rounded-lg sm:w-[280px]">
+      <article className="w-[80%] flex items-center justify-center gap-2 p-2 shadow-lg border border-slateGray rounded-md sm:w-[280px]">
         <figure className="w-full h-[90px]">
           <Image
             src={packing || ""}
