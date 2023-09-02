@@ -122,7 +122,7 @@ const Footer = () => {
           <ul className="mt-4 w-full flex items-center justify-start flex-wrap gap-2 smm:justify-around">
             {images.map((img) => (
               <li key={img.id}>
-                <figue className="">
+                <figure className="">
                   <Image
                     width={500}
                     height={500}
@@ -130,7 +130,7 @@ const Footer = () => {
                     alt="logo mercado pago"
                     className="w-[40px]"
                   />
-                </figue>
+                </figure>
               </li>
             ))}
           </ul>

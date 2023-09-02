@@ -1,20 +1,18 @@
 import React from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
+// import { Autoplay, Pagination, Navigation } from "swiper";
 
 const SliderImagesTop = ({ images }) => {
   const filteredImg = images?.filter((img) => img.position === "galery");
   return (
     <section className="w-full flex items-center justify-center mb-24">
-      <Swiper
+      {/* <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -39,7 +37,7 @@ const SliderImagesTop = ({ images }) => {
             </figure>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </section>
   );
 };

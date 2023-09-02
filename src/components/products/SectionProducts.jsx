@@ -13,6 +13,7 @@ const SectionProducts = ({ data }) => {
         {data.map((product) => (
           <CardProductHome
             key={product._id}
+            id={product._id}
             name={product.name}
             price_sale={product.price_sale}
             img={product.images?.length > 0 ? product.images[0]?.imageUrl : ""}

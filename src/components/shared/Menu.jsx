@@ -49,19 +49,21 @@ const Menu = ({ isOpen, token, openMenu }) => {
 
   return (
     <section className={isOpen ? `menu__open menu` : "menu"}>
-      <nav className={isOpen ? `nav__open nav` : "nav"}>
+      <nav
+        className={isOpen && `w-full relative opacity-100 flex flex-col gap-8`}
+      >
         <i
           className="bx bx-arrow-back text-end p-4 cursor-pointer text-lg text-white s:text-xl lg:hidden"
           onClick={openMenu}
         ></i>
         <ul className="w-full flex flex-col pl-3 gap-5 mb-1 text-white text-sm s:text-base lg:flex-row lg:gap-3">
-          <li className="nav__item">
+          <li className="relative cursor-pointer">
             <Link href="/" className="flex gap-1 lg:text-sm" onClick={openMenu}>
               Inicio
             </Link>
           </li>
           <li
-            className="nav__item overflow-hidden lg:relative"
+            className="relative cursor-pointer overflow-hidden lg:relative"
             onClick={() => setOpenDropDownOne(!openDropDownOne)}
           >
             <div className="flex items-center gap-1">
@@ -77,7 +79,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             <SubMenusClothing openDropDownOne={openDropDownOne} />
           </li>
           <li
-            className="nav__item  "
+            className="relative cursor-pointer  "
             onClick={() => setOpenDropDownShoes(!openDropDownShoes)}
           >
             <div className="flex items-center gap-1">
@@ -112,7 +114,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             />
           </li> */}
           <li
-            className="nav__item "
+            className="relative cursor-pointer "
             onClick={() => setOpenDropDownMarket(!openDropDownMarket)}
           >
             <div className="flex items-center gap-1">

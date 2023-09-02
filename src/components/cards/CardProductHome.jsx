@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const CardProductHome = ({ img, name, price_sale }) => {
+const CardProductHome = ({ id, img, name, price_sale }) => {
   return (
-    <Link href="#">
+    <Link href={`/product/${id}`} className="flex items-center justify-center">
       <article className="min-w-[250px] max-w-[250px] h-[350px] relative flex flex-col items-center p-4 gap-8 shadow-lg border border-slateGray rounded-md">
         <figure className="w-[200px] h-[200px]">
           <Image
