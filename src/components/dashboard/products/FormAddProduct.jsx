@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 
 import {
   Box,
@@ -17,6 +17,7 @@ import { indigo } from "@mui/material/colors";
 import Button from "@mui/material/Button";
 import { Formik, FieldArray } from "formik";
 import Image from "next/image";
+import axios from "axios";
 
 const theme = createTheme({
   palette: {
@@ -44,38 +45,40 @@ const tags = ["Oversize", "Ropa comoda", "Casual", "Moda", "Formal"];
 
 const FormAddProduct = () => {
   const handleFileChange = (event, push) => {
-    const file = event.target.files[0];
-    if (file) {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
       const imageURL = URL.createObjectURL(file);
-      push(imageURL);
+      const imageObject = { file, previewURL: imageURL };
+      console.log(imageObject);
+      push(imageObject);
     }
   };
 
-  const handleSelect = (event, push, remove, values) => {
+  const handleSelectOption = (event, push, remove, values, key) => {
     const {
       target: { value },
     } = event;
-    // Dividir los colores seleccionados en un array (selectedColors) si el valor es una cadena,
-    // o usar directamente el array de colores seleccionados si el valor es un array.
-    const selectedValue = typeof value === "string" ? value.split(",") : value;
 
-    // Obtener el array actual de colores del objeto 'values' proporcionado por Formik.
-    // Si no existen valores en 'values', se utiliza un array vacío como valor predeterminado,
-    // lo que significa que actualmente no hay colores seleccionados.
+    const selectedValue = typeof value === "string" ? value.split(",") : value;
     const currentValue = values || [];
 
-    // Encontrar los colores que han sido seleccionados pero no están presentes en el array de colores actuales (currentColors).
-    // Estos son los colores que deben agregarse al array.
-    const toAdd = selectedValue.filter((v) => !currentValue.includes(v));
+    const toAdd = selectedValue.filter((v) =>
+      currentValue.every((item) => item[key] !== v)
+    );
 
-    // Encontrar los colores que están presentes en currentColors pero no han sido seleccionados (selectedColors).
-    // Estos son los colores que deben eliminarse del array.
-    const toRemove = currentValue.filter((v) => !selectedValue.includes(v));
+    const toRemove = currentValue.filter(
+      (item) => !selectedValue.includes(item[key])
+    );
 
-    toAdd.forEach((v) => push(v));
+    toAdd.forEach((v) => {
+      const newItem = {};
+      newItem[key] = v;
+      push(newItem);
+    });
 
-    toRemove.forEach((v) => {
-      const index = currentValue.indexOf(v);
+    toRemove.forEach((item) => {
+      const index = currentValue.findIndex((c) => c[key] === item[key]);
       if (index !== -1) {
         remove(index);
       }
@@ -97,11 +100,12 @@ const FormAddProduct = () => {
             initialValues={{
               name: "",
               description: "",
-              images: [],
+              files: [],
               product_code: "",
               brand: "",
               stock: "",
               category: "",
+              product_type: "",
               colors: [],
               sizes: [],
               tags: [],
@@ -114,8 +118,51 @@ const FormAddProduct = () => {
               return errors;
             }}
             onSubmit={(values, { resetForm }) => {
-              console.log(values);
-              resetForm();
+              const formData = new FormData();
+
+              for (const key in values) {
+                if (values.hasOwnProperty(key)) {
+                  if (key === "files") {
+                    values[key].forEach((file) =>
+                      formData.append("files", file.file)
+                    );
+                  } else {
+                    if (Array.isArray(values[key])) {
+                      values[key].forEach((item, index) => {
+                        Object.keys(item).forEach((subKey) => {
+                          formData.append(
+                            `${key}[${index}][${subKey}]`,
+                            item[subKey]
+                          );
+                        });
+                      });
+                    } else {
+                      formData.append(key, values[key]);
+                    }
+                  }
+                }
+              }
+              axios({
+                method: "post",
+                url: `${process.env.DOMAIN_PROD}/productos/crear-producto`,
+                data: formData,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+                timeout: 20000,
+              })
+                .then((response) => {
+                  console.log(response.data);
+                })
+                .catch((error) => {
+                  if (axios.isCancel(error)) {
+                    console.error(
+                      "La solicitud se canceló debido al tiempo de espera."
+                    );
+                  } else {
+                    console.error(error);
+                  }
+                });
             }}
           >
             {({
@@ -138,6 +185,7 @@ const FormAddProduct = () => {
                 noValidate
                 autoComplete="off"
                 onSubmit={handleSubmit}
+                encType="multipart/form-data"
               >
                 {/* Detalles */}
 
@@ -192,7 +240,7 @@ const FormAddProduct = () => {
                       className="placeholder:text-white"
                     />
 
-                    <FieldArray name="images">
+                    <FieldArray name="files">
                       {({ push, remove }) => (
                         <div className="w-full flex flex-col gap-4">
                           <label
@@ -229,19 +277,21 @@ const FormAddProduct = () => {
                               <input
                                 type="file"
                                 id="imageInput"
+                                name="files"
+                                multiple
                                 style={{ display: "none" }}
                                 onChange={(e) => handleFileChange(e, push)}
                               />
                             </Box>
                           </label>
                           <article className="w-full flex items-center justify-start gap-2 flex-wrap">
-                            {values.images.map((image, index) => (
+                            {values.files.map((image, index) => (
                               <figure
                                 key={index}
                                 className="relative w-[100px] h-[100px]"
                               >
                                 <Image
-                                  src={image}
+                                  src={image.previewURL}
                                   alt={`Imagen ${index + 1}`}
                                   width={150}
                                   height={100}
@@ -355,12 +405,82 @@ const FormAddProduct = () => {
                           onBlur={handleBlur}
                           value={values.category}
                         >
-                          <MenuItem value="remeras">Remeras</MenuItem>
-                          <MenuItem value="pantalones">Pantalones</MenuItem>
-                          <MenuItem value="jeans">Jeans</MenuItem>
+                          <MenuItem value="indumentaria">Indumentaria</MenuItem>
+                          <MenuItem value="calzado">Calzado</MenuItem>
+                          <MenuItem value="accesorios">Accesorio</MenuItem>
                         </Select>
                       </FormControl>
                     </Box>
+                    <FormControl fullWidth size="small">
+                      <InputLabel id="demo-simple-select-label">
+                        Tipo de Producto
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="Tipo de Producto"
+                        name="product_type"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.product_type}
+                      >
+                        {values.category === "indumentaria" && [
+                          <MenuItem key="remera" value="remera">
+                            Remera
+                          </MenuItem>,
+                          <MenuItem key="chomba" value="campera">
+                            Chomba
+                          </MenuItem>,
+                          <MenuItem key="pantalon" value="pantalon">
+                            Pantalon
+                          </MenuItem>,
+                          <MenuItem key="jeans" value="jeans">
+                            Jeans
+                          </MenuItem>,
+                          <MenuItem key="campera" value="campera">
+                            Campera
+                          </MenuItem>,
+                          <MenuItem key="buzo" value="buzo">
+                            Buzo
+                          </MenuItem>,
+                        ]}
+                        {values.category === "calzado" && [
+                          <MenuItem key="urbanas" value="urbanas">
+                            Urbanas
+                          </MenuItem>,
+                          <MenuItem key="casuales" value="casuales">
+                            Casuales
+                          </MenuItem>,
+                          <MenuItem key="deportivas" value="deportivas">
+                            Deportivas
+                          </MenuItem>,
+                          <MenuItem key="entrenamiento" value="entrenamiento">
+                            Entrenamiento
+                          </MenuItem>,
+                        ]}
+                        {values.category === "accesorios" && [
+                          <MenuItem key="mochila" value="mochila">
+                            Mochila
+                          </MenuItem>,
+                          <MenuItem key="riñonera" value="riñonera">
+                            Riñonera
+                          </MenuItem>,
+                          <MenuItem key="gorra" value="gorra">
+                            Gorra
+                          </MenuItem>,
+                          <MenuItem key="media" value="media">
+                            media
+                          </MenuItem>,
+                        ]}
+                        {values.category !== "accesorios" &&
+                          values.category !== "calzado" &&
+                          values.category !== "indumentaria" && [
+                            <MenuItem key="disabled" value="" disabled>
+                              Debe seleccionar una Categoria
+                            </MenuItem>,
+                          ]}
+                      </Select>
+                    </FormControl>
                     <Box
                       sx={{
                         display: "flex",
@@ -379,9 +499,17 @@ const FormAddProduct = () => {
                               labelId="demo-multiple-checkbox-label"
                               id="demo-multiple-checkbox"
                               multiple
-                              value={values.colors}
+                              value={values.colors.map(
+                                (colorObj) => colorObj.color
+                              )}
                               onChange={(e) =>
-                                handleSelect(e, push, remove, values.colors)
+                                handleSelectOption(
+                                  e,
+                                  push,
+                                  remove,
+                                  values.colors,
+                                  "color"
+                                )
                               }
                               input={<OutlinedInput label="colors" />}
                               renderValue={(selected) => selected.join(", ")}
@@ -390,7 +518,9 @@ const FormAddProduct = () => {
                               {colors.map((name) => (
                                 <MenuItem key={name} value={name}>
                                   <Checkbox
-                                    checked={values.colors.indexOf(name) > -1}
+                                    checked={values.colors.some(
+                                      (colorObj) => colorObj.color === name
+                                    )}
                                   />
                                   <ListItemText primary={name} />
                                 </MenuItem>
@@ -409,9 +539,15 @@ const FormAddProduct = () => {
                               labelId="demo-multiple-checkbox-label"
                               id="demo-multiple-checkbox"
                               multiple
-                              value={values.sizes}
+                              value={values.sizes.map((size) => size.size)}
                               onChange={(e) =>
-                                handleSelect(e, push, remove, values.sizes)
+                                handleSelectOption(
+                                  e,
+                                  push,
+                                  remove,
+                                  values.sizes,
+                                  "size"
+                                )
                               }
                               input={<OutlinedInput label="sizes" />}
                               renderValue={(selected) => selected.join(", ")}
@@ -420,7 +556,9 @@ const FormAddProduct = () => {
                               {sizes.map((name) => (
                                 <MenuItem key={name} value={name}>
                                   <Checkbox
-                                    checked={values.sizes.indexOf(name) > -1}
+                                    checked={values.sizes.some(
+                                      (sizeObj) => sizeObj.size === name
+                                    )}
                                   />
                                   <ListItemText primary={name} />
                                 </MenuItem>
@@ -440,9 +578,16 @@ const FormAddProduct = () => {
                             labelId="demo-multiple-checkbox-label"
                             id="demo-multiple-checkbox"
                             multiple
-                            value={values.tags}
+                            value={values.tags.map((tag) => tag.tag)}
+                            label="Etiquetas"
                             onChange={(e) =>
-                              handleSelect(e, push, remove, values.tags)
+                              handleSelectOption(
+                                e,
+                                push,
+                                remove,
+                                values.tags,
+                                "tag"
+                              )
                             }
                             input={<OutlinedInput label="tags" />}
                             renderValue={(selected) => selected.join(", ")}
@@ -451,7 +596,9 @@ const FormAddProduct = () => {
                             {tags.map((name) => (
                               <MenuItem key={name} value={name}>
                                 <Checkbox
-                                  checked={values.tags.indexOf(name) > -1}
+                                  checked={values.tags.some(
+                                    (tagObj) => tagObj.tag === name
+                                  )}
                                 />
                                 <ListItemText primary={name} />
                               </MenuItem>

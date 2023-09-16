@@ -4,18 +4,13 @@ import { imagesRedes } from "@/utils/arrayImages";
 import Image from "next/image";
 import CardProductHome from "@/components/cards/CardProductHome";
 import Swiper from "swiper/bundle";
+import SwiperProductId from "@/components/products/SwiperProductId";
 
-import { SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper";
 const ProductById = ({ entries, productsByCategory }) => {
   const swiperRef = useRef(null);
-  const swiperProduct = useRef(null);
 
   const [sizeSelected, setSizeSelected] = useState("");
+  const [imageSlider, setImageSlider] = useState([]);
 
   const sizeArray = entries.sizes[0]?.split(",").map((item) => item.trim());
   const colorsArray = entries.colors[0]?.split(",").map((item) => item.trim());
@@ -24,26 +19,26 @@ const ProductById = ({ entries, productsByCategory }) => {
   };
 
   useEffect(() => {
-    const swiper1 = new Swiper(swiperProduct.current, {
-      direction: "horizontal",
-      containerModifierClass: "my-swiper1-", // Agrega un prefijo para las clases CSS
+    if (entries.images && entries.images.length > 0) {
+      const numberOfImages = 5;
+      const duplicatedImages = [];
 
-      loop: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-    // Limpia el Swiper cuando el componente se desmonte
-    return () => {
-      swiper1.destroy();
-    };
-  }, []);
+      for (let i = 0; i < numberOfImages; i++) {
+        duplicatedImages.push({
+          ...entries.images[0],
+          _id: `sliderImage${i}`,
+        });
+      }
+
+      setImageSlider(duplicatedImages);
+    }
+  }, [entries]);
 
   useEffect(() => {
     const swiper = new Swiper(swiperRef.current, {
       autoHeight: true,
       direction: "horizontal",
+      containerModifierClass: "my-swiperSimilarProd-",
       loop: true,
       navigation: {
         nextEl: ".swiper-button-next",
@@ -66,14 +61,7 @@ const ProductById = ({ entries, productsByCategory }) => {
           spaceBetween: 40,
         },
       },
-      // pagination: {
-      //   el: ".swiper-pagination",
-      // },
-      // scrollbar: {
-      //   el: ".swiper-scrollbar",
-      // },
     });
-    // Limpia el Swiper cuando el componente se desmonte
     return () => {
       swiper.destroy();
     };
@@ -81,26 +69,10 @@ const ProductById = ({ entries, productsByCategory }) => {
 
   return (
     <>
-      <Layout subtitle={entries?.name.toString()}>
+      <Layout>
         <article className="w-full flex flex-col gap-4 pt-12 px-4 lg:flex-row mb-24">
-          <div className="w-full">
-            <div className="my-swiper1" ref={swiperProduct}>
-              <div className="swiper-wrapper flex items-center justify-center">
-                {entries.images?.map((img) => (
-                  <article className="swiper-slide" key={img._id}>
-                    <figure className="w-full flex items-center justify-center">
-                      <Image
-                        width={500}
-                        height={500}
-                        src={img.imageUrl || ""}
-                        alt="imagen product"
-                        className="w-full h-full object-contain"
-                      />
-                    </figure>
-                  </article>
-                ))}
-              </div>
-            </div>
+          <div className="w-full lg:w-[70%] mb-8">
+            <SwiperProductId imagesProduct={imageSlider} />
           </div>
 
           <div className="w-full flex flex-col lg:w-[50%]">
@@ -176,7 +148,7 @@ const ProductById = ({ entries, productsByCategory }) => {
             Tambien te podrian interesar.
           </h3>
 
-          <div className="swiper" ref={swiperRef}>
+          <div className="swiper swiperSimilar" ref={swiperRef}>
             <div className="swiper-wrapper">
               {productsByCategory.products?.map((product) => (
                 <article className="swiper-slide" key={product._id}>
@@ -193,12 +165,8 @@ const ProductById = ({ entries, productsByCategory }) => {
                 </article>
               ))}
             </div>
-            {/* <div className="swiper-pagination"></div> */}
-
             <button className="swiper-button-prev"></button>
             <button className="swiper-button-next"></button>
-
-            {/* <div class="swiper-scrollbar"></div> */}
           </div>
         </article>
       </Layout>

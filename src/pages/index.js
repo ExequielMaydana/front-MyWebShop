@@ -9,11 +9,11 @@ export default function Home({ imagesSlider, products }) {
   return (
     <>
       <Layout>
-        {/* <SliderImagesTop images={imagesSlider?.images} /> */}
+        <SliderImagesTop images={imagesSlider?.images} />
         <WeOffer />
-        <article className="w-full flex flex-wrap items-center justify-around gap-4 px-4 mb-24 lg:px-8">
+        <article className="w-full flex flex-wrap items-center justify-around gap-8 px-4 mb-24 lg:px-8">
           {imagesCardStart.map((i) => (
-            <CardStart img={i.imgUrl} key={i.id} />
+            <CardStart img={i.imgUrl} key={i.id} title={i.title} />
           ))}
         </article>
         <SectionProducts data={products.products} />

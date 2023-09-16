@@ -16,7 +16,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Head from "next/head";
 import React, { useState } from "react";
-import ListItemsNav from "./ListItemsNav";
+import ListItemsNav from "./nav/ListItemsNav";
 
 function Copyright(props) {
   return (

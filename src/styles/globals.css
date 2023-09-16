@@ -23,7 +23,6 @@ body {
 
 #__next {
   width: 100%;
-  height: 100vh;
   max-width: 1500px;
 }
 
@@ -73,8 +72,24 @@ a {
 }
 
 .sub__menu {
-  height: 0;
-  overflow: hidden;
+  position: absolute;
+  top: 0;
+  height: 0px;
+  transition: ease 0.4s;
+  opacity: 0;
+}
+
+.sub__menuOpen {
+  width: auto;
+  height: auto;
+  padding-left: 0.5em;
+  font-size: 0.875rem;
+  transition: ease 0.4s;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  padding-top: 0.5em;
 }
 
 .icon__row {
@@ -154,6 +169,112 @@ a {
   margin: 0; /* Elimina el margen por defecto en Chrome */
 }
 
+.my-swiper1 {
+  width: 100% !important;
+}
+
+.swiper {
+  width: 100% !important;
+}
+.my-swiper1 > .swiper-slide {
+  width: 100% !important;
+}
+
+.swiperSimilar .swiper-slide {
+  width: auto !important;
+}
+
+.logo_mp {
+  filter: drop-shadow(-2px 2px 4px #fff);
+}
+
+.scrollNone::-webkit-scrollbar {
+  display: none;
+}
+
+/* swiper header home */
+.mySwiper .swiper-button-prev,
+.swiper-button-next {
+  color: #f3f4f6 !important;
+  width: calc(1em / 10px * 10px) !important;
+  height: 2em !important;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  background-color: #f3f4f6 !important;
+}
+
+.swiperSimilar .swiper-button-next,
+.swiper-button-prev {
+  color: #4d47c3 !important;
+}
+
+.mySwiper-product {
+  width: 100% !important;
+  position: absolute;
+  border-radius: 0.8em;
+}
+
+.mySwiper-product > .swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.mySwiper-product .swiper-pagination-bullet {
+  background-color: #a78bfa !important;
+}
+
+.filters-container {
+  position: fixed;
+  top: 153px;
+  right: -300px; /* Inicialmente fuera de la pantalla */
+  width: min(100%, 300px);
+  height: 100%;
+  background-color: #fff;
+  transition: right 0.3s ease-in-out; /* Agrega una transición suave */
+  z-index: 1000;
+  padding: 1em 1em 0 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  border-top-left-radius: 8px;
+}
+
+.filters-container.active {
+  right: 0;
+  box-shadow: -1px -1px 8px #a78bfa;
+}
+.sublist {
+  width: 100%;
+  height: 0px;
+  transition: ease 0.3s;
+}
+
+.sublistOpen {
+  height: 100px;
+  transition: ease 0.4s;
+}
+
+.header__about {
+  width: 100%;
+  height: 500px;
+  background-image: url(../../public/Images/nosotrosbg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 640px) {
+  .mySwiper-product {
+    width: 600px !important;
+    height: 600px;
+  }
+}
+
 @media screen and (min-width: 976px) {
   .menu {
     position: relative;
@@ -171,48 +292,46 @@ a {
     position: absolute;
     top: 0;
     height: 0px;
+    transition: ease 0.4s;
+    opacity: 0;
     overflow: hidden;
   }
 
-  .sub__menu-open {
+  .sub__menuOpen {
     width: auto;
-    height: 200px;
+    min-height: 200px;
     padding-left: 0;
     font-size: 0.875rem;
-    overflow-y: auto;
+    transition: ease 0.4s;
+    opacity: 1;
   }
 
-  .sub__menu-open::-webkit-scrollbar {
+  .sub__menuOpen::-webkit-scrollbar {
     display: none;
   }
-}
 
-.my-swiper1 {
-  width: 100% !important;
-}
+  .mySwiper-product {
+    width: 650px !important;
+    height: 650px !important;
+  }
 
-.swiper {
-  width: 100%;
-}
-.swiper-slide {
-  width: auto !important;
-}
+  .ctrPage {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    place-items: start;
+  }
 
-.logo_mp {
-  filter: drop-shadow(-2px 2px 4px #fff);
-}
+  .filters-container {
+    width: 100%;
+    position: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0em;
+    padding-top: 0.8em;
+  }
 
-.scrollNone::-webkit-scrollbar {
-  display: none;
+  .filters-container.active {
+    box-shadow: none;
+  }
 }
-
-/* .swiper-button-prev,
-.swiper-button-next {
-  color: #f3f4f6 !important;
-  width: calc(1em / 10px * 10px) !important;
-  height: 2em !important;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #f3f4f6 !important;
-} */

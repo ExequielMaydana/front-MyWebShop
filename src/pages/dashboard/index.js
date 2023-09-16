@@ -1,7 +1,7 @@
-import Chart from "@/components/dashboard/Chart";
-import Deposit from "@/components/dashboard/Deposit";
+import Chart from "@/components/dashboard/visualizations/Chart";
+import Deposit from "@/components/dashboard/visualizations/Deposit";
 import Layout from "@/components/dashboard/Layout";
-import Orders from "@/components/dashboard/Orders";
+import Orders from "@/components/dashboard/orders/Orders";
 import { Grid, Paper } from "@mui/material";
 import React from "react";
 

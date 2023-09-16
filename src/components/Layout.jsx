@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "@/styles/Home.module.css";
-import NavBar from "./shared/NavBar";
-import Footer from "./shared/Footer";
+import NavBar from "./shared/navbar/NavBar";
+import Footer from "./shared/footer/Footer";
 import Head from "next/head";
 
-const Layout = ({ children, subtitle }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <Head>
+        <title>CloseWithoutGender</title>
         <meta
           name="description"
           content="Descubre la tienda online de indumentaria sin género con la más amplia selección de zapatillas, pantalones, remeras, camperas, accesorios y mucho más. Encuentra tu estilo único con nuestra colección inclusiva y diversa. Únete a la revolución de la moda sin límites y encuentra prendas que se adaptan a tu personalidad. Explora ahora y viste como tú quieras en nuestra tienda de moda sin género."
@@ -21,7 +22,6 @@ const Layout = ({ children, subtitle }) => {
         <meta name="generator" content="Next.js, Tailwind CSS" />
         <meta name="author" content="Exequiel Maydana" />
         <link rel="icon" href="" />
-        <title>CloseWithoutGender - {subtitle}</title>
       </Head>
       <main className={styles.main}>
         <NavBar />

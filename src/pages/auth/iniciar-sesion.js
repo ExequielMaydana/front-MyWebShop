@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "@/components/auth/Login";
-import NavBar from "@/components/shared/NavBar";
+import NavBar from "@/components/shared/navbar/NavBar";
 
 const iniciarSesion = () => {
   return (

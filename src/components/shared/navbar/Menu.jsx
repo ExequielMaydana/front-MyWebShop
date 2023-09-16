@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SubMenusClothing from "./SubMenusClothing";
 import SubMenuMarkets from "./SubMenuMarkets";
-import SubMenuOffers from "./SubMenuOffers";
 import SubMenuShoes from "./SubMenuShoes";
 import SubMenuAccessories from "./SubMenuAccessories";
 import Cookies from "js-cookie";
@@ -15,7 +14,6 @@ const Menu = ({ isOpen, token, openMenu }) => {
   const [aTokenExists, setATokenExists] = useState(false);
   const [openDropDownOne, setOpenDropDownOne] = useState(false);
   const [openDropDownMarket, setOpenDropDownMarket] = useState(false);
-  const [openDropDownOffers, setOpenDropDownOffers] = useState(false);
   const [openDropDownShoes, setOpenDropDownShoes] = useState(false);
   const [openDropDownAccesories, setOpenDropDownAccesories] = useState(false);
 
@@ -50,7 +48,9 @@ const Menu = ({ isOpen, token, openMenu }) => {
   return (
     <section className={isOpen ? `menu__open menu` : "menu"}>
       <nav
-        className={isOpen && `w-full relative opacity-100 flex flex-col gap-8`}
+        className={
+          isOpen ? "w-full relative opacity-100 flex flex-col gap-8" : "menu"
+        }
       >
         <i
           className="bx bx-arrow-back text-end p-4 cursor-pointer text-lg text-white s:text-xl lg:hidden"
@@ -63,7 +63,7 @@ const Menu = ({ isOpen, token, openMenu }) => {
             </Link>
           </li>
           <li
-            className="relative cursor-pointer overflow-hidden lg:relative"
+            className="relative cursor-pointer overflow-hidden"
             onClick={() => setOpenDropDownOne(!openDropDownOne)}
           >
             <div className="flex items-center gap-1">
@@ -75,11 +75,10 @@ const Menu = ({ isOpen, token, openMenu }) => {
               </article>
             </div>
 
-            {/* sub-menus -> Mujer - Hombre */}
             <SubMenusClothing openDropDownOne={openDropDownOne} />
           </li>
           <li
-            className="relative cursor-pointer  "
+            className="relative cursor-pointer"
             onClick={() => setOpenDropDownShoes(!openDropDownShoes)}
           >
             <div className="flex items-center gap-1">
@@ -94,12 +93,12 @@ const Menu = ({ isOpen, token, openMenu }) => {
 
             <SubMenuShoes openDropDownShoes={openDropDownShoes} />
           </li>
-          {/* <li
-            className="nav__item"
+          <li
+            className="relative cursor-pointer"
             onClick={() => setOpenDropDownAccesories(!openDropDownAccesories)}
           >
-            <div className="flex items-center gap-1">
-              <span className="lg:text-sm"> Accesorios</span>
+            <div className="flex items-center gap-1 cursor-pointer">
+              <span className="lg:text-sm "> Accesorios</span>
               <article
                 className={
                   openDropDownAccesories ? "icon__row-active" : "icon__row"
@@ -112,9 +111,9 @@ const Menu = ({ isOpen, token, openMenu }) => {
             <SubMenuAccessories
               openDropDownAccesories={openDropDownAccesories}
             />
-          </li> */}
+          </li>
           <li
-            className="relative cursor-pointer "
+            className="relative cursor-pointer"
             onClick={() => setOpenDropDownMarket(!openDropDownMarket)}
           >
             <div className="flex items-center gap-1">
@@ -131,23 +130,6 @@ const Menu = ({ isOpen, token, openMenu }) => {
             {/* sub-menu -> Marcas */}
             <SubMenuMarkets openDropDownMarket={openDropDownMarket} />
           </li>
-          {/* <li
-            className="nav__item "
-            onClick={() => setOpenDropDownOffers(!openDropDownOffers)}
-          >
-            <div className="flex items-center gap-1">
-              <span className="lg:text-sm">Ofertas</span>
-              <article
-                className={
-                  openDropDownOffers ? "icon__row-active" : "icon__row"
-                }
-              >
-                <i className="bx bx-chevron-right"></i>
-              </article>
-            </div>
-
-            <SubMenuOffers openDropDownOffers={openDropDownOffers} />
-          </li> */}
         </ul>
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
       </nav>
@@ -155,14 +137,17 @@ const Menu = ({ isOpen, token, openMenu }) => {
       <div className="w-full flex flex-col items-start gap-2 pb-1 text-white font-light text-sm s:text-base lg:absolute top-0 right-0 lg:w-auto lg:flex-row lg:justify-center lg:text-sm">
         {" "}
         <Link
-          href="#"
+          href="/sobrenosotros"
           className="flex pl-3 gap-1 items-center justify-center"
           onClick={openMenu}
         >
           <i className="fa-solid fa-user-tie"></i>
           Sobre nosotros
         </Link>
-        <Link href="#" className="flex pl-3 gap-1 items-center justify-center ">
+        <Link
+          href="/ayuda"
+          className="flex pl-3 gap-1 items-center justify-center "
+        >
           <i className="fa-regular fa-circle-question"></i>
           Ayuda
         </Link>

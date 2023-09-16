@@ -3,7 +3,7 @@ import React from "react";
 
 const SubMenuMarkets = ({ openDropDownMarket }) => {
   return (
-    <ul className={openDropDownMarket ? "sub__menu-open" : "sub__menu"}>
+    <ul className={openDropDownMarket ? "sub__menuOpen" : "sub__menu"}>
       <li>
         <Link href="#" className="w-full h-full">
           Nike

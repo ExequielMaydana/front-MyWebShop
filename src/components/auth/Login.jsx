@@ -26,7 +26,7 @@ const Login = () => {
           </p>
           <p className="w-full flex justify-center gap-2 text-darkGrayTwo text-xs sm:text-sm">
             ¿No tenés cuenta aún?
-            <Link href="/registrarse" className="text-slateBlue z-10">
+            <Link href="/auth/registrarse" className="text-slateBlue z-10">
               Crear cuenta
             </Link>
           </p>
@@ -108,7 +108,10 @@ const Login = () => {
                 </p>
                 <p className="w-full flex justify-center gap-2 text-darkGrayTwo text-xs sm:text-sm">
                   ¿No tenés cuenta aún?
-                  <Link href="/registrarse" className="text-slateBlue z-10">
+                  <Link
+                    href="/auth/registrarse"
+                    className="text-slateBlue z-10"
+                  >
                     Crear cuenta
                   </Link>
                 </p>
@@ -183,7 +186,7 @@ const Login = () => {
                   )}
 
                   <Link
-                    href="/recuperar"
+                    href="#"
                     className=" absolute text-darkGrayTwo text-xs right-0 top-1"
                   >
                     ¿Olvidaste tu contraseña?

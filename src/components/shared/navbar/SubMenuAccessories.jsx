@@ -3,7 +3,7 @@ import React from "react";
 
 const SubMenuAccessories = ({ openDropDownAccesories }) => {
   return (
-    <ul className={openDropDownAccesories ? "sub__menu-open" : "sub__menu"}>
+    <ul className={openDropDownAccesories ? "sub__menuOpen" : "sub__menu"}>
       <li>
         <Link href="#" className="w-full h-full">
           Mochilas
@@ -11,7 +11,7 @@ const SubMenuAccessories = ({ openDropDownAccesories }) => {
       </li>
       <li>
         <Link href="#" className="w-full h-full">
-        Riñoneras
+          Riñoneras
         </Link>
       </li>
       <li>

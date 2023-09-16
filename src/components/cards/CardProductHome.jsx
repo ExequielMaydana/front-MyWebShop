@@ -5,12 +5,12 @@ import React from "react";
 const CardProductHome = ({ id, img, name, price_sale }) => {
   return (
     <Link href={`/product/${id}`} className="flex items-center justify-center">
-      <article className="min-w-[250px] max-w-[250px] h-[350px] relative flex flex-col items-center p-4 gap-8 shadow-lg border border-slateGray rounded-md">
+      <article className="min-w-[250px] max-w-[250px] h-[300px] relative flex flex-col items-center p-4 gap-8 shadow-lg border border-slateGray rounded-md">
         <figure className="w-[200px] h-[200px]">
           <Image
             width={800}
             height={800}
-            src={img || ""}
+            src={img ? img : ""}
             alt="imagen producto"
             className="w-full h-full object-contain"
           />

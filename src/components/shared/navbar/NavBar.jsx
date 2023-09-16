@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import logoType from "../../../public/logotypes/greedy-logotype.webp";
 import Link from "next/link";
 import Menu from "./Menu";
 import Cookies from "js-cookie";
@@ -50,6 +49,12 @@ const NavBar = () => {
           <article className="flex items-center justify-center gap-2 text-white">
             <Link href="/carrito" className="text-lg s:text-3xl mt-1">
               <i className="bx bx-cart cursor-pointer"></i>
+            </Link>
+            <Link
+              href="/auth/iniciar-sesion"
+              className="text-lg s:text-2xl mt-1"
+            >
+              <i className="bx bx-user cursor-pointer"></i>
             </Link>
           </article>
         </div>

@@ -29,7 +29,7 @@ const SignUp = () => {
 
           <p className="w-full flex justify-center gap-2 text-darkGrayTwo text-xs sm:text-sm">
             ¿Ya tienes una cuenta?
-            <Link href="/iniciar-sesion" className="text-slateBlue z-10">
+            <Link href="/auth/iniciar-sesion" className="text-slateBlue z-10">
               Iniciar sesión
             </Link>
           </p>

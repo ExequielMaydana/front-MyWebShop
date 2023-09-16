@@ -2,14 +2,17 @@ export const imagesCardStart = [
   {
     id: 0,
     imgUrl: "/Images/1.png",
+    title: "calzado",
   },
   {
     id: 1,
     imgUrl: "/Images/2.png",
+    title: "indumentaria",
   },
   {
     id: 2,
     imgUrl: "/Images/4.png",
+    title: "accesorios",
   },
 ];
 
