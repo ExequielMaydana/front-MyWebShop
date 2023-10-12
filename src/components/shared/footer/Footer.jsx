@@ -57,13 +57,10 @@ const Footer = () => {
                 <b>Ayuda</b>
               </span>
               <div className="flex flex-col gap-1 mt-2">
-                <Link href="#" className="text-xs">
-                  FAQ
-                </Link>
-                <Link href="#" className="text-xs">
+                <Link href="/como-comprar" className="text-xs">
                   ¿Cómo comprar?
                 </Link>
-                <Link href="#" className="text-xs">
+                <Link href="/medir-talle" className="text-xs">
                   ¿Cómo medir tu talle?
                 </Link>
                 <Link href="#" className="text-xs">
@@ -71,6 +68,9 @@ const Footer = () => {
                 </Link>
                 <Link href="#" className="text-xs">
                   Cambios
+                </Link>
+                <Link href="#" className="text-xs">
+                  Contactate
                 </Link>
               </div>
             </li>
@@ -84,9 +84,6 @@ const Footer = () => {
                 </Link>
                 <Link href="#" className="text-xs">
                   Privacidad y Seguridad
-                </Link>
-                <Link href="#" className="text-xs">
-                  Misión y Valores
                 </Link>
               </div>
             </li>

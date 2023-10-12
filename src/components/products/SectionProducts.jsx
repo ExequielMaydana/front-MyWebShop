@@ -4,7 +4,6 @@ import Swiper from "swiper/bundle";
 
 const SectionProducts = ({ data }) => {
   const swiperRef = useRef(null);
-  console.log(data);
   useEffect(() => {
     const swiper = new Swiper(swiperRef.current, {
       autoHeight: true,

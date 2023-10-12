@@ -149,7 +149,7 @@ const FormAddProduct = () => {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
-                timeout: 20000,
+                timeout: 0,
               })
                 .then((response) => {
                   console.log(response.data);

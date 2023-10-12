@@ -4,11 +4,11 @@ import NavBar from "./shared/navbar/NavBar";
 import Footer from "./shared/footer/Footer";
 import Head from "next/head";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, subtitle }) => {
   return (
     <>
       <Head>
-        <title>CloseWithoutGender</title>
+        <title>{subtitle}</title>
         <meta
           name="description"
           content="Descubre la tienda online de indumentaria sin género con la más amplia selección de zapatillas, pantalones, remeras, camperas, accesorios y mucho más. Encuentra tu estilo único con nuestra colección inclusiva y diversa. Únete a la revolución de la moda sin límites y encuentra prendas que se adaptan a tu personalidad. Explora ahora y viste como tú quieras en nuestra tienda de moda sin género."

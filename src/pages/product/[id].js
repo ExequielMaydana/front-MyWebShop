@@ -10,29 +10,10 @@ const ProductById = ({ entries, productsByCategory }) => {
   const swiperRef = useRef(null);
 
   const [sizeSelected, setSizeSelected] = useState("");
-  const [imageSlider, setImageSlider] = useState([]);
 
-  const sizeArray = entries.sizes[0]?.split(",").map((item) => item.trim());
-  const colorsArray = entries.colors[0]?.split(",").map((item) => item.trim());
   const selectedSize = (index) => {
     setSizeSelected(index === sizeSelected ? null : index);
   };
-
-  useEffect(() => {
-    if (entries.images && entries.images.length > 0) {
-      const numberOfImages = 5;
-      const duplicatedImages = [];
-
-      for (let i = 0; i < numberOfImages; i++) {
-        duplicatedImages.push({
-          ...entries.images[0],
-          _id: `sliderImage${i}`,
-        });
-      }
-
-      setImageSlider(duplicatedImages);
-    }
-  }, [entries]);
 
   useEffect(() => {
     const swiper = new Swiper(swiperRef.current, {
@@ -72,7 +53,7 @@ const ProductById = ({ entries, productsByCategory }) => {
       <Layout>
         <article className="w-full flex flex-col gap-4 pt-12 px-4 lg:flex-row mb-24">
           <div className="w-full lg:w-[70%] mb-8">
-            <SwiperProductId imagesProduct={imageSlider} />
+            <SwiperProductId imagesProduct={entries.images} />
           </div>
 
           <div className="w-full flex flex-col lg:w-[50%]">
@@ -88,15 +69,15 @@ const ProductById = ({ entries, productsByCategory }) => {
                 <span className="">Guía de talles</span>
               </div>
               <ul className="w-full flex flex-wrap items-center justify-center gap-2">
-                {sizeArray.map((items, index) => (
+                {entries.sizes?.map((items, index) => (
                   <li
                     key={index}
                     className={`px-4 py-2 text-center border border-darkGray rounded-md shadow-lg cursor-pointer ${
-                      sizeSelected === items ? "bg-black text-white" : ""
+                      sizeSelected === items.size ? "bg-black text-white" : ""
                     }`}
-                    onClick={() => selectedSize(items)}
+                    onClick={() => selectedSize(items.size)}
                   >
-                    {items}
+                    {items.size}
                   </li>
                 ))}
               </ul>
@@ -107,7 +88,7 @@ const ProductById = ({ entries, productsByCategory }) => {
             <div className="w-full flex flex-col mt-8">
               <p className="">{entries.description}</p>
               <ul className="w-full flex flex-col mt-4">
-                <li>color: {colorsArray[1]}</li>
+                <li>color: {entries.colors[0]?.color}</li>
                 <li className="mt-4">
                   <b className="text-xl">Devoluciones y envios</b>{" "}
                   <p>

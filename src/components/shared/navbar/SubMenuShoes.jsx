@@ -29,7 +29,7 @@ const SubMenuShoes = ({ openDropDownShoes }) => {
           href="/products/byPruductType/entrenamiento"
           className="w-full h-full"
         >
-          Entrenamiento
+          Training
         </Link>
       </li>
       <li>
