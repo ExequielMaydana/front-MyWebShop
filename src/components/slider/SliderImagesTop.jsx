@@ -33,7 +33,7 @@ const SliderImagesTop = ({ images }) => {
               <img
                 src={img.imageURL || ""}
                 alt="imagen slider"
-                className="object-cover"
+                className="object-contain"
               />
             </figure>
           </SwiperSlide>

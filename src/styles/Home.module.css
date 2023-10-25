@@ -9,3 +9,9 @@
   min-height: 100vh;
   flex-grow: 1;
 }
+
+@media screen and (min-width: 976px) {
+  .contentHome {
+    margin-top: 109px;
+  }
+}
