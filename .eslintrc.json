@@ -6,6 +6,7 @@
       {
         "patterns": ["@mui/*/*/*"]
       }
-    ]
+    ],
+    "react/no-unescaped-entities": 0
   }
 }

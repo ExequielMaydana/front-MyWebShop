@@ -39,7 +39,7 @@ export default function Home({ imagesSlider, products }) {
 
   useEffect(() => {
     if (token) getMyUser();
-  }, []);
+  });
 
   return (
     <>

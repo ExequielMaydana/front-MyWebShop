@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
+import Image from "next/image";
 
 const SliderImagesTop = ({ images }) => {
   const filteredImg = images?.filter((img) => img.position === "galery");
@@ -30,7 +31,9 @@ const SliderImagesTop = ({ images }) => {
         {filteredImg?.map((img) => (
           <SwiperSlide key={img._id}>
             <figure className="w-full h-full">
-              <img
+              <Image
+                width={1000}
+                height={1000}
                 src={img.imageURL || ""}
                 alt="imagen slider"
                 className="object-contain"

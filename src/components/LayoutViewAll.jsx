@@ -8,7 +8,7 @@ const LayoutViewAll = ({ products, subRoute }) => {
     if (products) {
       setTodoProducts(products.products);
     }
-  }, []);
+  });
 
   return (
     <section className="mb-16 ctrPage lg:pt-8">
