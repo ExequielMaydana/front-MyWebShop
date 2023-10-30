@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Menu from "./Menu";
 import Cookies from "js-cookie";
-import axios from "axios";
-import { data } from "autoprefixer";
 import { useRouter } from "next/router";
 
-const NavBar = () => {
+const NavBar = ({
+  setViewDataUser,
+  dataUser,
+  setATokenExists,
+  aTokenExists,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [aTokenExists, setATokenExists] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [dataUser, setDataUser] = useState([]);
 
   const token = Cookies.get("tokenUser");
 
@@ -20,28 +21,6 @@ const NavBar = () => {
   const openMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  const getMyUser = async () => {
-    try {
-      await axios
-        .get(`${process.env.DOMAIN_PROD}/usuarios/me`, {
-          headers: {
-            "x-access-token": token,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          setDataUser(res.data[0]);
-          setATokenExists(true);
-        });
-    } catch (error) {
-      console.log("error en peticion GET a MyUser", error);
-    }
-  };
-
-  useEffect(() => {
-    if (token) getMyUser();
-  }, []);
 
   const logOut = () => {
     openMenu();
@@ -123,7 +102,7 @@ const NavBar = () => {
                       {dataUser.email}
                     </p>
                     {dataUser.profileImage?.imageUrl ? (
-                      <figure className="w-[80px] h-[80px] cursor-pointer">
+                      <figure className="w-[80px] h-[80px]">
                         <Image
                           width={500}
                           height={500}
@@ -141,7 +120,10 @@ const NavBar = () => {
                     </h2>
                     <hr className="border border-slateGray w-full mt-2" />
                     <ul className="p-4 w-full flex flex-col items-start justify-start gap-2 text-black">
-                      <li className="flex items-center justify-center gap-2 cursor-pointer">
+                      <li
+                        className="flex items-center justify-center gap-2 cursor-pointer"
+                        onClick={() => setViewDataUser(true)}
+                      >
                         {" "}
                         <i className="bx bx-user-circle text-lg"></i>
                         Mi cuenta
@@ -179,6 +161,7 @@ const NavBar = () => {
           dataUser={dataUser}
           aTokenExists={aTokenExists}
           setATokenExists={setATokenExists}
+          setViewDataUser={setViewDataUser}
         />
       </header>
     </>

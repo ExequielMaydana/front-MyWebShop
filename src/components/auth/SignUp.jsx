@@ -26,7 +26,7 @@ const SignUp = () => {
           onModal={onModal}
         />
       ) : (
-        <section className="w-full h-full flex flex-col items-start lg:flex-row lg:justify-between">
+        <section className="w-full h-full flex flex-col items-start lg:flex-row lg:justify-between lg:my-12">
           <article className="hidden lg:w-full lg:h-full lg:flex flex-col items-center mt-[5em]">
             <h2 className="text-black font-bold text-1xl">Registro</h2>
             <div className="w-full flex flex-col items-center">
@@ -61,7 +61,7 @@ const SignUp = () => {
                 password: "",
                 confirmpassword: "",
                 dni: "",
-                telefono: "",
+                phone: "",
                 file: null,
               }}
               validate={(values) => {
@@ -69,6 +69,9 @@ const SignUp = () => {
 
                 if (!values.full_name) {
                   errors.full_name = "Requerido";
+                } else if (values.full_name.length < 3) {
+                  errors.full_name =
+                    "El nombre debe contener al menos 3 caracteres";
                 }
 
                 if (!values.email) {
@@ -98,8 +101,8 @@ const SignUp = () => {
                 if (!values.dni) {
                   errors.dni = "Requerido";
                 }
-                if (!values.telefono) {
-                  errors.telefono = "Requerido";
+                if (!values.phone) {
+                  errors.phone = "Requerido";
                 }
 
                 return errors;
@@ -140,7 +143,7 @@ const SignUp = () => {
                 handleSubmit,
               }) => (
                 <form
-                  className="max-w-[450px] lg:w-[400px] p-5 rounded-xl flex flex-col gap-8"
+                  className="w-full max-w-[450px] lg:w-[400px] p-5 rounded-xl flex flex-col gap-8"
                   onSubmit={handleSubmit}
                 >
                   <h3 className="hidden lg:block text-start font-semibold text-black text-base mb-[-1.5em]">
@@ -264,10 +267,7 @@ const SignUp = () => {
                     )}
                   </div>
                   <div className="relative w-full flex flex-col gap-1">
-                    <label
-                      className="text-darkGray text-sm"
-                      htmlFor="confirmpassword"
-                    >
+                    <label className="text-darkGray" htmlFor="confirmpassword">
                       <input
                         className="
                 w-full 
@@ -348,17 +348,17 @@ const SignUp = () => {
                     colorPlace
                 "
                         type="text"
-                        name="telefono"
+                        name="phone"
                         id="telefono"
                         placeholder="Teléfono"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.telefono}
+                        value={values.phone}
                       />
                     </label>
-                    {errors.telefono && touched.telefono && (
+                    {errors.phone && touched.phone && (
                       <p className="text-error text-xs text-start mt-1">
-                        {errors.telefono}
+                        {errors.phone}
                       </p>
                     )}
                   </div>
@@ -399,7 +399,10 @@ const SignUp = () => {
                             <p className="py-2">
                               Seleccione una foto de perfil:
                             </p>
-                            <label htmlFor="profileImage">
+                            <label
+                              htmlFor="profileImage"
+                              className="flex flex-wrap text-sm sm:text-base"
+                            >
                               <input
                                 type="file"
                                 id="profileImage"

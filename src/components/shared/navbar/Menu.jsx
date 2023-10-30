@@ -15,6 +15,7 @@ const Menu = ({
   dataUser,
   aTokenExists,
   setATokenExists,
+  setViewDataUser,
 }) => {
   const [openDropDownOne, setOpenDropDownOne] = useState(false);
   const [openDropDownMarket, setOpenDropDownMarket] = useState(false);
@@ -29,6 +30,11 @@ const Menu = ({
     Cookies.remove("tokenUser");
     setATokenExists(false);
     router.push("/");
+  };
+
+  const changeViewMiAccount = () => {
+    setViewDataUser(true);
+    openMenu();
   };
 
   return (
@@ -182,7 +188,7 @@ const Menu = ({
         </li>
         {aTokenExists && (
           <li
-            onClick={openMenu}
+            onClick={changeViewMiAccount}
             className="flex gap-1 items-center justify-center cursor-pointer lg:hidden"
           >
             <i className="bx bx-user-circle text-lg"></i>
