@@ -1,14 +1,13 @@
 import React from "react";
 
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper/modules";
 
 const SliderImagesTop = ({ images }) => {
   const filteredImg = images?.filter((img) => img.position === "galery");
@@ -25,7 +24,7 @@ const SliderImagesTop = ({ images }) => {
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Pagination, Navigation]}
         className="mySwiper"
       >
         {filteredImg?.map((img) => (
@@ -34,7 +33,7 @@ const SliderImagesTop = ({ images }) => {
               <img
                 src={img.imageURL || ""}
                 alt="imagen slider"
-                className="object-cover"
+                className="object-contain"
               />
             </figure>
           </SwiperSlide>

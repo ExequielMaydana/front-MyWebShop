@@ -53,6 +53,33 @@ module.exports = {
       aliceBlueTwo: "#F0EFFF",
       darkGrayTwo: "#B0B0B0",
     },
+    backgroundColor: {
+      bgOpacity: "rgba(0, 0, 0, 0.5)",
+
+      white: "#f9fafb",
+      black: "#09090b",
+      aliceBlue: "#eef2ff",
+      gray: "#404040",
+      darkSlateGray: "#27272a",
+      dimGray: "#52525b",
+      slateGray: "#D3D3D3",
+      darkGray: "#9ca3af",
+      royalBlue: "#4338ca",
+      midNightBlue: "#111827",
+      whiteSmoke: "#f3f4f6",
+      mediumPurple: "#a78bfa",
+      error: "#b00020",
+      blackMy: "#17181C",
+      tras: "transparent",
+      indigoEight: "#4338ca",
+      indigoSeven: "#4338ca",
+
+      // nuevos colores login
+      slateBlue: "#4D47C3",
+      lightSlateBlue: "#A7A3FF",
+      aliceBlueTwo: "#F0EFFF",
+      darkGrayTwo: "#B0B0B0",
+    },
     fontSize: {
       //medidas xs, sm, lg, xl, xl, 2xl, 3xl...
       xxs: "0.60rem",
@@ -71,9 +98,15 @@ module.exports = {
       "8xl": "6rem",
       "9xl": "8rem",
     },
-    boxShadow: {
-      lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      custom: "0px 4px 61px 0px rgba(77, 71, 195, 0.40)",
+    // boxShadow: {
+    //   lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    //   custom: "0px 4px 61px 0px rgba(77, 71, 195, 0.40)",
+    // },
+    transitionProperty: {
+      scaleTr: "transform",
+    },
+    scale: {
+      103: "1.03",
     },
   },
   plugins: [],
