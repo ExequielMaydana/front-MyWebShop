@@ -39,7 +39,10 @@ const Footer = () => {
             </div>
           </label>
           <div className="flex items-center justify-center gap-2">
-            <Link href="#" target="_blank">
+            <Link
+              href="https://instagram.com/closet_without_gender?igshid=dTVmZTE5cGltc2lt"
+              target="_blank"
+            >
               <i className="bx bxl-instagram text-white text-2xl"></i>
             </Link>
             <Link href="#" target="_blank">
@@ -50,7 +53,7 @@ const Footer = () => {
         <div className="hidden lg:flex lg:w-[1px] min-h-[100%] bg-slateGray"></div>
         <hr className=" border-slateGray lg:hidden" />
 
-        <article className="w-full flex flex-col">
+        <article className="w-full flex flex-col items-center justify-center text-center">
           <ul className="w-full flex flex-col text-white gap-4 smm:flex-row smm:justify-around">
             <li>
               <span className="">
@@ -63,13 +66,10 @@ const Footer = () => {
                 <Link href="/medir-talle" className="text-xs">
                   ¿Cómo medir tu talle?
                 </Link>
-                <Link href="#" className="text-xs">
+                <Link href="/envios" className="text-xs">
                   Envios
                 </Link>
-                <Link href="#" className="text-xs">
-                  Cambios
-                </Link>
-                <Link href="#" className="text-xs">
+                <Link href="/contacto" className="text-xs">
                   Contactate
                 </Link>
               </div>
@@ -79,10 +79,10 @@ const Footer = () => {
                 <b>Quiénes somos</b>
               </span>
               <div className="flex flex-col gap-1 mt-2">
-                <Link href="#" className="text-xs">
+                <Link href="/sobrenosotros" className="text-xs">
                   Nosotros
                 </Link>
-                <Link href="#" className="text-xs">
+                <Link href="/privacidad-y-seguridad" className="text-xs">
                   Privacidad y Seguridad
                 </Link>
               </div>
@@ -95,13 +95,20 @@ const Footer = () => {
                 Lunes a Viernes de 9 a 20 hs / Sábado de 9 a 17 hs
               </p>
 
-              <div className="w-full flex flex-col gap-1 mt-2">
-                <Link href="#" className="text-xs flex items-center gap-2">
+              <div className="w-full flex flex-col items-center justify-center text-center gap-1 mt-2">
+                <Link
+                  href="https://wa.link/t8w93u"
+                  target="_blank"
+                  className="text-xs flex items-center gap-2"
+                >
                   <i className="bx bxl-whatsapp text-base"></i>
                   Whatsapp
                 </Link>
 
-                <Link href="#" className="text-xs flex items-center gap-2">
+                <Link
+                  href="tel:+543454076854"
+                  className="text-xs flex items-center gap-2"
+                >
                   <i className="bx bx-phone-outgoing text-base"></i>
                   +54 9 345 4076854
                 </Link>
@@ -115,7 +122,7 @@ const Footer = () => {
           <span className="text-white">
             <b>Metodos de pago</b>
           </span>
-          <ul className="mt-4 w-full flex items-center justify-start flex-wrap gap-2 smm:justify-around">
+          <ul className="mt-4 w-full flex items-center justify-center flex-wrap gap-2 smm:justify-around">
             {images.map((img) => (
               <li key={img.id}>
                 <figure className="">

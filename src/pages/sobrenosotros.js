@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Link from "next/link";
 import React from "react";
 
 const Sobrenosotros = () => {
@@ -7,7 +8,7 @@ const Sobrenosotros = () => {
       <section className="w-full flex flex-col mb-16">
         <article className="header__about mb-8">
           <div className="w-full h-full flex flex-col items-center justify-center bg-bgOpacity px-4">
-            <h2 className="text-3xl font-bold text-white md:text-4xl xl:text-5xl">
+            <h2 className="text-3xl text-center font-bold text-white md:text-4xl xl:text-5xl">
               Conoce más de Nosotros
             </h2>
             <p className="text-center text-white pb-4 xl:text-lg">
@@ -64,10 +65,10 @@ const Sobrenosotros = () => {
               </div>
             </div>
 
-            <ul className="w-full flex flex-col gap-4">
+            <ul className="w-full flex flex-col gap-4 lg:pt-8">
               <li>
                 <b>Nuestra Filosofía:</b>
-                <p className="text-sm">
+                <p className="text-sm text-center lg:pt-1">
                   En el corazón de CloseWithoutGender está la creencia de que la
                   moda debe ser una expresión de tu autenticidad. Nos
                   enorgullece ofrecer prendas que abrazan la comodidad sin
@@ -77,7 +78,7 @@ const Sobrenosotros = () => {
               </li>
               <li>
                 <b>Nuestra Colección:</b>{" "}
-                <p className="text-sm">
+                <p className="text-sm text-center">
                   Explora nuestra amplia gama de indumentaria, desde pantalones
                   y remeras hasta camperas y buzos, todos diseñados para
                   adaptarse a cualquier estilo y género. Descubre nuestra
@@ -92,7 +93,7 @@ const Sobrenosotros = () => {
               <li>
                 {" "}
                 <b>Nuestro Compromiso con la Sostenibilidad:</b>{" "}
-                <p className="text-sm">
+                <p className="text-sm text-center">
                   Creemos en un futuro sostenible y estamos comprometidos a
                   reducir nuestro impacto ambiental. Trabajamos con proveedores
                   que comparten nuestra visión y nos esforzamos por ofrecer
@@ -102,15 +103,24 @@ const Sobrenosotros = () => {
               <li className=" flex flex-col">
                 {" "}
                 <b>Únete a Nuestra Comunidad:</b>{" "}
-                <p className="text-sm">
+                <p className="text-sm text-center">
                   CloseWithoutGender no es solo una tienda, es una comunidad de
                   personas apasionadas por la moda sin género. Únete a nosotros
                   en las redes sociales para mantenerte al día con las últimas
                   tendencias, eventos y promociones.{" "}
                 </p>
-                <div className="pt-2">
-                  <i className="bx bxl-instagram text-black text-2xl"></i>{" "}
-                  <i className="bx bxl-facebook-circle text-black text-2xl"></i>
+                <div className="pt-2 flex items-center justify-center gap-4">
+                  <Link
+                    href="https://instagram.com/closet_without_gender?igshid=dTVmZTE5cGltc2lt"
+                    target="_blank"
+                  >
+                    {" "}
+                    <i className="bx bxl-instagram text-black text-2xl"></i>{" "}
+                  </Link>
+                  <Link href="#">
+                    {" "}
+                    <i className="bx bxl-facebook-circle text-black text-2xl"></i>
+                  </Link>
                 </div>
               </li>
             </ul>

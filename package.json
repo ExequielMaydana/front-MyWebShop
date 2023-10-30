@@ -26,6 +26,7 @@
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.43.9",
     "recharts": "^2.7.2",
+    "styled-components": "^6.1.0",
     "swiper": "^10.2.0"
   },
   "devDependencies": {

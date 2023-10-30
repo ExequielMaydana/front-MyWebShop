@@ -46,7 +46,7 @@ a {
 
 .menu {
   position: fixed;
-  z-index: 2;
+  z-index: 20;
   top: 0;
   left: 0;
   width: min(100%, 350px);
@@ -65,7 +65,6 @@ a {
 }
 
 .menu__open {
-  opacity: 1;
   visibility: visible;
   translate: 0;
   animation: menu-in 0.375s;
@@ -75,8 +74,8 @@ a {
   position: absolute;
   top: 0;
   height: 0px;
-  transition: ease 0.4s;
-  opacity: 0;
+  transition: ease 0.1s;
+  overflow: hidden;
 }
 
 .sub__menuOpen {
@@ -159,24 +158,17 @@ a {
   color: #a7a3ff;
 }
 
-.inputNumber input[type="number"] {
+input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
 
-.inputNumber input[type="number"]::-webkit-inner-spin-button,
-.inputNumber input[type="number"]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0; /* Elimina el margen por defecto en Chrome */
 }
 
-.my-swiper1 {
-  width: 100% !important;
-}
-
 .swiper {
-  width: 100% !important;
-}
-.my-swiper1 > .swiper-slide {
   width: 100% !important;
 }
 
@@ -184,15 +176,12 @@ a {
   width: auto !important;
 }
 
-.logo_mp {
-  filter: drop-shadow(-2px 2px 4px #fff);
-}
-
 .scrollNone::-webkit-scrollbar {
   display: none;
 }
 
 /* swiper header home */
+
 .mySwiper .swiper-button-prev,
 .swiper-button-next {
   color: #f3f4f6 !important;
@@ -247,12 +236,13 @@ a {
 .sublist {
   width: 100%;
   height: 0px;
-  transition: ease 0.3s;
+  transition: ease 0.1s;
+  overflow: hidden;
 }
 
 .sublistOpen {
-  height: 100px;
-  transition: ease 0.4s;
+  height: auto;
+  transition: ease 0.3s;
 }
 
 .header__about {
@@ -266,6 +256,15 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.glassEffect {
+  width: min(90%, 700px);
+  background: rgba(67, 67, 67, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
 }
 
 @media screen and (min-width: 640px) {

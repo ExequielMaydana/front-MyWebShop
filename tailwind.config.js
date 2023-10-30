@@ -98,10 +98,10 @@ module.exports = {
       "8xl": "6rem",
       "9xl": "8rem",
     },
-    boxShadow: {
-      lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      custom: "0px 4px 61px 0px rgba(77, 71, 195, 0.40)",
-    },
+    // boxShadow: {
+    //   lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    //   custom: "0px 4px 61px 0px rgba(77, 71, 195, 0.40)",
+    // },
     transitionProperty: {
       scaleTr: "transform",
     },

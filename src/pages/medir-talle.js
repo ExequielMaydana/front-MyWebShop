@@ -7,7 +7,6 @@ import Image from "next/image";
 import React from "react";
 
 const medirTalle = () => {
-  console.log(arrayGuideSizesClothing);
   return (
     <Layout subtitle="Como medir tu talle">
       <h2 className="text-2xl p-4 font-semibold lg:text-4xl">Guía de talles</h2>
@@ -59,7 +58,7 @@ const medirTalle = () => {
 
           <div className="w-full flex flex-wrap lg:items-center justify-center">
             {data.topSide[0]?.images.map((img) => (
-              <figure className="w-full sm:w-[200px]" key={img.id}>
+              <figure className="w-full sm:w-[350px]" key={img.id}>
                 <Image
                   src={img.imgUrl}
                   alt="img"
@@ -88,7 +87,7 @@ const medirTalle = () => {
 
           <div className="w-full flex flex-wrap lg:items-center justify-center">
             {data.bottomSide[0]?.images.map((img) => (
-              <figure className="w-full sm:w-[200px]" key={img.id}>
+              <figure className="w-full sm:w-[350px]" key={img.id}>
                 <Image
                   src={img.imgUrl}
                   alt="img"
