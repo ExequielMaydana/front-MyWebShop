@@ -102,13 +102,13 @@ const NavBar = ({
                       {dataUser.email}
                     </p>
                     {dataUser.profileImage?.imageUrl ? (
-                      <figure className="w-[80px] h-[80px]">
+                      <figure className="w-[80px] rounded-full">
                         <Image
                           width={500}
                           height={500}
                           src={dataUser.profileImage?.imageUrl || ""}
                           alt="imagen de perfil"
-                          className="w-full h-full object-cover rounded-full shadow-lg shadow-mediumPurple"
+                          className="w-full h-full object-cover aspect-square rounded-full shadow-lg shadow-mediumPurple"
                         />
                       </figure>
                     ) : (

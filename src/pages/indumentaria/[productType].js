@@ -1,7 +1,7 @@
 import React from "react";
 
 const ProductByType = () => {
-  return <div>[productType]</div>;
+  return <div>asd</div>;
 };
 
 export default ProductByType;
