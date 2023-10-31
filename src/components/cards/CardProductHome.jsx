@@ -2,9 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const CardProductHome = ({ id, img, name, price_sale }) => {
+const CardProductHome = ({
+  id,
+  img,
+  name,
+  price_sale,
+  setOnLoading,
+  setOnIdProductLoading,
+}) => {
   return (
-    <Link href={`/product/${id}`} className="flex items-center justify-center">
+    <Link
+      href={`/product/${id}`}
+      className="flex items-center justify-center"
+      onClick={() => {
+        setOnLoading(true);
+        if (setOnIdProductLoading && id) {
+          setOnIdProductLoading(id);
+        }
+      }}
+    >
       <article className="min-w-[250px] max-w-[250px] h-[300px] relative flex flex-col items-center p-4 gap-8 shadow-lg border border-slateGray rounded-md">
         <figure className="w-[200px] h-[200px]">
           <Image

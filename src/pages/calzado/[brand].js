@@ -1,10 +1,20 @@
+import Layout from "@/components/Layout";
+import LayoutViewAll from "@/components/LayoutViewAll";
+import { useRouter } from "next/router";
 import React from "react";
 
-const CalzadoByBrand = () => {
-  return <div></div>;
+const CalzadoByBrand = ({ products }) => {
+  const router = useRouter();
+  const { brand } = router.query;
+  return (
+    <Layout>
+      <LayoutViewAll products={products} subRoute={brand}></LayoutViewAll>
+    </Layout>
+  );
 };
 
 export default CalzadoByBrand;
+
 export async function getServerSideProps({ params }) {
   const { brand } = params;
   const apiUrl = `${process.env.DOMAIN_PROD}/productos/search?category=calzado&brand=${brand}`;

@@ -5,15 +5,23 @@ import Image from "next/image";
 import CardProductHome from "@/components/cards/CardProductHome";
 import Swiper from "swiper/bundle";
 import SwiperProductId from "@/components/products/SwiperProductId";
+import Loading from "@/components/modals/Loading";
 
 const ProductById = ({ entries, productsByCategory }) => {
   const swiperRef = useRef(null);
-
+  const [onLoading, setOnLoading] = useState(false);
+  const [onIdProductLoading, setOnIdProductLoading] = useState("");
   const [sizeSelected, setSizeSelected] = useState("");
 
   const selectedSize = (index) => {
     setSizeSelected(index === sizeSelected ? null : index);
   };
+
+  useEffect(() => {
+    if (entries._id === onIdProductLoading) {
+      setOnLoading(false);
+    }
+  }, [entries]);
 
   useEffect(() => {
     const swiper = new Swiper(swiperRef.current, {
@@ -51,6 +59,7 @@ const ProductById = ({ entries, productsByCategory }) => {
   return (
     <>
       <Layout>
+        {onLoading && <Loading />}
         <article className="w-full flex flex-col gap-4 pt-12 px-4 lg:flex-row mb-24">
           <div className="w-full lg:w-[70%] mb-8">
             <SwiperProductId imagesProduct={entries.images} />
@@ -142,6 +151,8 @@ const ProductById = ({ entries, productsByCategory }) => {
                         ? product.images[0]?.imageUrl
                         : ""
                     }
+                    setOnLoading={setOnLoading}
+                    setOnIdProductLoading={setOnIdProductLoading}
                   />
                 </article>
               ))}
@@ -157,20 +168,37 @@ const ProductById = ({ entries, productsByCategory }) => {
 
 export default ProductById;
 
-export async function getStaticPaths() {
-  const url = `${process.env.DOMAIN_PROD}/productos`;
-  const response = await fetch(url);
-  const entries = await response.json();
-  const paths = entries.products?.map((e) => ({
-    params: { id: e._id },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
+// export async function getStaticPaths() {
+//   const url = `${process.env.DOMAIN_PROD}/productos`;
+//   const response = await fetch(url);
+//   const entries = await response.json();
+//   const paths = entries.products?.map((e) => ({
+//     params: { id: e._id },
+//   }));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps({ params: { id } }) {
+// export async function getStaticProps({ params: { id } }) {
+//   const url = `${process.env.DOMAIN_PROD}/productos/${id}`;
+//   const response = await fetch(url);
+//   const entries = await response.json();
+
+//   const resProductByCategory = await fetch(
+//     `${process.env.DOMAIN_PROD}/productos/search?category=${entries?.category}`
+//   );
+//   const productsByCategory = await resProductByCategory.json();
+//   return {
+//     props: {
+//       entries,
+//       productsByCategory,
+//     },
+//   };
+// }
+
+export async function getServerSideProps({ params: { id } }) {
   const url = `${process.env.DOMAIN_PROD}/productos/${id}`;
   const response = await fetch(url);
   const entries = await response.json();

@@ -69,7 +69,7 @@ const FormEditDataUser = ({
           handleSubmit,
         }) => (
           <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
-            <h3 className="hidden lg:block text-start font-semibold text-white text-base mb-[-1.5em]">
+            <h3 className="text-start font-semibold text-white text-base">
               Editar datos personales
             </h3>
             <div className="flex flex-col">
@@ -162,13 +162,20 @@ const FormEditDataUser = ({
                 </p>
               )}
             </div>
-
-            <button
-              type="submit"
-              className="block w-full p-2 text-center mt-8 text-white bg-slateBlue border-none rounded-md shadow shadow-custom font-semibold"
-            >
-              Guardar datos
-            </button>
+            <div className="flex flex-col gap-4">
+              <button
+                type="submit"
+                className="uppercase block w-full p-2 text-center mt-4 text-white bg-slateBlue border-none rounded-md shadow shadow-custom font-semibold"
+              >
+                Guardar datos
+              </button>
+              <button
+                onClick={() => setChangeEditProfile(!changeEditProfile)}
+                className="uppercase block w-full p-2 text-center text-white bg-slateBlue border-none rounded-md shadow shadow-custom font-semibold"
+              >
+                Cancelar
+              </button>
+            </div>
           </form>
         )}
       </Formik>
