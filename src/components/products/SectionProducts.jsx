@@ -15,34 +15,14 @@ const SectionProducts = ({ data }) => {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-      slidesPerView: 1,
-      spaceBetween: 10,
-      centeredSlides: true,
-      breakpoints: {
-        380: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        480: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-        640: {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
-      },
-      // pagination: {
-      //   el: ".swiper-pagination",
-      // },
-      // scrollbar: {
-      //   el: ".swiper-scrollbar",
-      // },
+      slidesPerView: "auto",
+      spaceBetween: 20,
     });
     return () => {
       swiper.destroy();
     };
   }, []);
+
   return (
     <>
       {onLoading && <Loading />}

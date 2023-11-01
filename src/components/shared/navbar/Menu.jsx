@@ -137,7 +137,7 @@ const Menu = ({
               openDropDownAccesories={openDropDownAccesories}
             />
           </li>
-          <li
+          {/* <li
             className="relative cursor-pointer"
             onClick={() => setOpenDropDownMarket(!openDropDownMarket)}
           >
@@ -153,7 +153,7 @@ const Menu = ({
             </div>
 
             <SubMenuMarkets openDropDownMarket={openDropDownMarket} />
-          </li>
+          </li> */}
         </ul>
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
       </nav>

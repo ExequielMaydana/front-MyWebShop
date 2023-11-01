@@ -1,13 +1,14 @@
 export const itemsMenuShoes = [
   { id: 0, title: "Nike", link: "nike" },
-  { id: 1, title: "Adidas", link: "adidas" },
-  { id: 2, title: "Vans", link: "vans" },
+  { id: 1, title: "Jordan", link: "jordan" },
+  { id: 2, title: "Adidas", link: "adidas" },
+  { id: 3, title: "Vans", link: "vans" },
 ];
 
 export const itemsMenuClothing = [
   { id: 0, title: "Remeras", link: "remeras" },
-  { id: 1, title: "Chombas", link: "chombas" },
-  { id: 2, title: "Pantalones", link: "pantalones" },
+  { id: 1, title: "Pantalones", link: "pantalones" },
+  { id: 2, title: "Bermudas", link: "bermudas" },
   { id: 3, title: "Buzos", link: "buzos" },
   { id: 4, title: "Camperas", link: "camperas" },
 ];

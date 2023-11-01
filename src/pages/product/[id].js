@@ -13,6 +13,10 @@ const ProductById = ({ entries, productsByCategory }) => {
   const [onIdProductLoading, setOnIdProductLoading] = useState("");
   const [sizeSelected, setSizeSelected] = useState("");
 
+  const productsOfInterest = productsByCategory.products?.filter(
+    (product) => product._id !== entries._id
+  );
+  console.log(productsOfInterest);
   const selectedSize = (index) => {
     setSizeSelected(index === sizeSelected ? null : index);
   };
@@ -27,29 +31,13 @@ const ProductById = ({ entries, productsByCategory }) => {
     const swiper = new Swiper(swiperRef.current, {
       autoHeight: true,
       direction: "horizontal",
-      containerModifierClass: "my-swiperSimilarProd-",
-      loop: true,
+      containerModifierClass: "my-swiperOfInterest-",
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-      slidesPerView: 1,
-      spaceBetween: 10,
-      centeredSlides: true,
-      breakpoints: {
-        380: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        480: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-        640: {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
-      },
+      slidesPerView: "auto",
+      spaceBetween: 20,
     });
     return () => {
       swiper.destroy();
@@ -133,14 +121,14 @@ const ProductById = ({ entries, productsByCategory }) => {
             </div>
           </div>
         </article>
-        <article className="w-[100%] flex flex-col px-4 gap-4 mb-16 pr-8">
+        <article className="w-[100%] flex flex-col px-4 gap-4 mb-16">
           <h3 className="text-xl font-medium uppercase lg:text-2xl">
             Tambien te podrian interesar.
           </h3>
 
-          <div className="swiper swiperSimilar" ref={swiperRef}>
+          <div className="swiper swiperOfInterest" ref={swiperRef}>
             <div className="swiper-wrapper">
-              {productsByCategory.products?.map((product) => (
+              {productsOfInterest?.map((product) => (
                 <article className="swiper-slide" key={product._id}>
                   <CardProductHome
                     id={product._id}
@@ -204,7 +192,7 @@ export async function getServerSideProps({ params: { id } }) {
   const entries = await response.json();
 
   const resProductByCategory = await fetch(
-    `${process.env.DOMAIN_PROD}/productos/search?category=${entries?.category}`
+    `${process.env.DOMAIN_PROD}/productos/search?brand=${entries?.brand}&category=${entries?.category}`
   );
   const productsByCategory = await resProductByCategory.json();
   return {
