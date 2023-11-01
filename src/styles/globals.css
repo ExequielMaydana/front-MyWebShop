@@ -178,17 +178,18 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* swiper header home */
 
-.mySwiper .swiper-button-prev,
+.mySwiperTopHome .swiper-button-prev,
 .swiper-button-next {
   color: #f3f4f6 !important;
   width: calc(1em / 10px * 10px) !important;
   height: 2em !important;
 }
 
-.mySwiper .swiper-pagination-bullet-active {
+.mySwiperTopHome .swiper-pagination-bullet-active {
   background-color: #f3f4f6 !important;
 }
 
+/* swiper page product by id (te puede interesar) */
 .swiperSimilar .swiper-slide {
   width: auto !important;
 }
@@ -198,6 +199,27 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #4d47c3 !important;
 }
 
+.swiperOfInterest {
+  width: 100% !important;
+}
+
+.swiperOfInterest .swiper-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1em;
+}
+
+.swiperOfInterest .swiper-slide {
+  width: auto !important;
+}
+
+.swiperOfInterest .swiper-button-next,
+.swiper-button-prev {
+  color: #4d47c3 !important;
+}
+
+/* swiper product by id */
 .mySwiper-product {
   width: 100% !important;
   position: absolute;
@@ -241,6 +263,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .sublistOpen {
+  margin-top: 0.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.2em;
   height: auto;
   transition: ease 0.3s;
 }
