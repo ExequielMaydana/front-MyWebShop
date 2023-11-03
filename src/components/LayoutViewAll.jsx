@@ -7,10 +7,8 @@ const LayoutViewAll = ({ products, subRoute }) => {
   const [productsFiltered, setProductsFiltered] = useState([]);
 
   useEffect(() => {
-    if (products) {
-      setTodoProducts(products.products);
-    }
-  });
+    setTodoProducts(products.products);
+  }, [products]);
 
   return (
     <section className="mb-16 ctrPage lg:pt-8">

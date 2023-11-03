@@ -27,6 +27,7 @@ const SwiperProductId = ({ imagesProduct }) => {
               src={img.imageUrl}
               alt=""
               className="w-full h-full object-contain rounded-md"
+              priority
             />
           </SwiperSlide>
         ))}
