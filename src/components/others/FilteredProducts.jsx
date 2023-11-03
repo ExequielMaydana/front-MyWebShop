@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { checkboxsStyle, checkboxsBrand } from "./dataFilters";
 
 const FilteredProducts = ({ todoProducts, setProductsFiltered, subRoute }) => {
@@ -15,14 +15,14 @@ const FilteredProducts = ({ todoProducts, setProductsFiltered, subRoute }) => {
     brand: false,
   });
 
-  const uniqueSizes = todoProducts.reduce((uniqueSizes, product) => {
+  const uniqueSizes = todoProducts?.reduce((uniqueSizes, product) => {
     product.sizes.forEach((size) => {
       uniqueSizes[size.size] = size;
     });
     return uniqueSizes;
   }, {});
 
-  const sizesArray = Object.values(uniqueSizes);
+  const sizesArray = Object.values(uniqueSizes || {});
 
   const toggleFilters = () => {
     setShowFilters(!showFilters);

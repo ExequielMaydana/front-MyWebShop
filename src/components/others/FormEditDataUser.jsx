@@ -69,18 +69,18 @@ const FormEditDataUser = ({
           handleSubmit,
         }) => (
           <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
-            <h3 className="text-start font-semibold text-white text-base">
+            <h3 className="text-start font-semibold text-white text-base smm:text-xl">
               Editar datos personales
             </h3>
             <div className="flex flex-col">
               <label
-                className="uppercase text-sm text-darkGray"
+                className="uppercase text-sm text-darkGray smm:text-base"
                 htmlFor="full_name"
               >
                 Tu nombre:
               </label>
               <input
-                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black"
+                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black smm:text-lg"
                 type="text"
                 name="full_name"
                 id="full_name"
@@ -97,13 +97,13 @@ const FormEditDataUser = ({
 
             <div className="relative w-full flex flex-col gap-1">
               <label
-                className="uppercase text-sm text-darkGray"
+                className="uppercase text-sm text-darkGray smm:text-base"
                 htmlFor="email"
               >
                 Tu correo electrónico:
               </label>
               <input
-                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black"
+                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black smm:text-lg"
                 type="email"
                 name="email"
                 id="email"
@@ -119,13 +119,13 @@ const FormEditDataUser = ({
             </div>
             <div className="w-full flex flex-col gap-1">
               <label
-                className="uppercase text-sm text-darkGray"
+                className="uppercase text-sm text-darkGray smm:text-base"
                 htmlFor="phone"
               >
                 Tu numero de telefono:
               </label>
               <input
-                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black"
+                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black smm:text-lg"
                 type="number"
                 name="phone"
                 id="phone"
@@ -142,11 +142,14 @@ const FormEditDataUser = ({
               )}
             </div>
             <div className="relative w-full flex flex-col gap-1">
-              <label className="uppercase text-sm text-darkGray" htmlFor="DNI">
+              <label
+                className="uppercase text-sm text-darkGray smm:text-base"
+                htmlFor="DNI"
+              >
                 Tu numero de DNI:
               </label>
               <input
-                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black"
+                className="pl-2 py-2 outline-none rounded-md bg-tras bg-whiteSmoke text-black smm:text-lg"
                 type="number"
                 name="dni"
                 id="DNI"

@@ -16,7 +16,6 @@ const ProductById = ({ entries, productsByCategory }) => {
   const productsOfInterest = productsByCategory.products?.filter(
     (product) => product._id !== entries._id
   );
-  console.log(productsOfInterest);
   const selectedSize = (index) => {
     setSizeSelected(index === sizeSelected ? null : index);
   };

@@ -20,9 +20,16 @@ const LayoutViewAll = ({ products, subRoute }) => {
           <li className="text-darkGray">/</li>
           <li className="">{subRoute ? subRoute : ""}</li>
         </ul>
-        <h2 className="lg:hidden flex items-center justify-center text-center gap-2">
-          <b>{products.items ? products.items : "0"}</b> Resultados
-        </h2>
+        {productsFiltered.length > 0 ? (
+          <h2 className="lg:hidden flex items-center justify-center text-center gap-2">
+            <b>{productsFiltered.length}</b> Resultados
+          </h2>
+        ) : (
+          <h2 className="lg:hidden flex items-center justify-center text-center gap-2">
+            <b>{products.items ? products.items : "0"}</b> Resultados
+          </h2>
+        )}
+
         <FilteredProducts
           todoProducts={todoProducts}
           setProductsFiltered={setProductsFiltered}
@@ -32,7 +39,7 @@ const LayoutViewAll = ({ products, subRoute }) => {
       {productsFiltered.length > 0 ? (
         <article className="w-full flex flex-col items-center justify-center gap-8">
           <h2 className="hidden lg:flex items-center justify-center text-center gap-2 lg:text-xl">
-            <b>{productsFiltered ? productsFiltered.length : "0"}</b> Resultados
+            <b>{productsFiltered.length}</b> Resultados
           </h2>
           <div className="w-full flex flex-wrap items-center justify-center gap-8">
             {productsFiltered?.map((product) => (
@@ -56,7 +63,7 @@ const LayoutViewAll = ({ products, subRoute }) => {
                 <b>{products.items ? products.items : "0"}</b> Resultados
               </h2>
 
-              <div className="w-full flex flex-col items-center justify-center absolute top-[6em] right-0 bottom-0 left-0 m-auto lg:top-[6em]">
+              <div className="w-full flex flex-col items-center justify-center lg:p-24 lg:ml-[-24em]">
                 <h3 className="text-center w-[90%] lg:text-xl">
                   <span className="text-3xl text-darkGray lg:text-6xl">
                     UPS!{" "}

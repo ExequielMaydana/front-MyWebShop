@@ -6,55 +6,20 @@ import CardBrand from "@/components/cards/CardBrand";
 import Layout from "@/components/Layout";
 import { imagesCardStart, imagesBrands } from "@/utils/arrayImages";
 import DataUser from "@/components/others/DataUser";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import axios from "axios";
+import { useState } from "react";
 
 export default function Home({ imagesSlider, products }) {
-  const [dataMyUser, setDataMyUser] = useState([]);
+  const [dataMyUser, setDataMyUser] = useState({});
   const [viewDataUser, setViewDataUser] = useState(false);
-  const [dataUser, setDataUser] = useState([]);
-  const [aTokenExists, setATokenExists] = useState(false);
-
-  const token = Cookies.get("tokenUser");
-
-  const getMyUser = async () => {
-    try {
-      await axios
-        .get(`${process.env.DOMAIN_PROD}/usuarios/me`, {
-          headers: {
-            "x-access-token": token,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          setDataMyUser(res.data[0]);
-          setDataUser(res.data[0]);
-          setATokenExists(true);
-        });
-    } catch (error) {
-      console.log("error en peticion GET a MyUser", error);
-    }
-  };
-
-  useEffect(() => {
-    if (token) getMyUser();
-  });
 
   return (
     <>
-      <Layout
-        aTokenExists={aTokenExists}
-        setATokenExists={setATokenExists}
-        dataUser={dataUser}
-        setViewDataUser={setViewDataUser}
-      >
+      <Layout setViewDataUser={setViewDataUser} setDataMyUser={setDataMyUser}>
         {viewDataUser && (
           <DataUser
             dataMyUser={dataMyUser}
             setViewDataUser={setViewDataUser}
             viewDataUser={viewDataUser}
-            getMyUser={getMyUser}
           />
         )}
         <SliderImagesTop images={imagesSlider?.images} />

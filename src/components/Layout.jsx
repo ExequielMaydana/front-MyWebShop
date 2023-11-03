@@ -4,14 +4,7 @@ import NavBar from "./shared/navbar/NavBar";
 import Footer from "./shared/footer/Footer";
 import Head from "next/head";
 
-const Layout = ({
-  children,
-  subtitle,
-  setViewDataUser,
-  dataUser,
-  setATokenExists,
-  aTokenExists,
-}) => {
+const Layout = ({ children, subtitle, setViewDataUser, setDataMyUser }) => {
   return (
     <>
       <Head>
@@ -32,10 +25,8 @@ const Layout = ({
       </Head>
       <main className={styles.main}>
         <NavBar
-          dataUser={dataUser}
-          setATokenExists={setATokenExists}
-          aTokenExists={aTokenExists}
           setViewDataUser={setViewDataUser}
+          setDataMyUser={setDataMyUser}
         />
         <section className={styles.contentHome}>{children}</section>
         <Footer />
