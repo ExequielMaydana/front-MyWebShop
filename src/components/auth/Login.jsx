@@ -49,7 +49,14 @@ const Login = () => {
           </div>
           <div className="w-full flex items-center justify-end mt-[-3em]">
             <figure className="w-[200px] h-[300px]">
-              <Image src={personLogIn} alt="person" className="" />
+              <Image
+                width={1000}
+                height={1000}
+                src="/Images/Saly-14.svg"
+                alt="person"
+                className=""
+                priority
+              />
             </figure>
           </div>
         </article>

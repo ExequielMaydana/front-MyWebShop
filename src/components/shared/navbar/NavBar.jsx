@@ -34,12 +34,14 @@ const NavBar = ({ setViewDataUser, setDataMyUser }) => {
           setATokenExists(true);
         });
     } catch (error) {
-      console.log("error en peticion GET a MyUser", error);
+      console.log(error);
     }
   };
 
   useEffect(() => {
-    if (token) getMyUser();
+    if (token) {
+      getMyUser();
+    }
   }, []);
 
   const logOut = () => {
@@ -97,7 +99,7 @@ const NavBar = ({ setViewDataUser, setDataMyUser }) => {
             )}
             {aTokenExists && (
               <div className="hidden lg:flex pl-4 relative group">
-                {dataUser.profileImage?.imageUrl ? (
+                {dataUser?.profileImage && (
                   <figure
                     className="w-[50px] h-[50px] cursor-pointer profileImage"
                     onMouseEnter={() => setIsHovered(true)}
@@ -110,8 +112,6 @@ const NavBar = ({ setViewDataUser, setDataMyUser }) => {
                       className="w-full h-full object-cover rounded-full shadow-sm shadow-mediumPurple profileImage"
                     />
                   </figure>
-                ) : (
-                  <figure></figure>
                 )}
                 {isHovered && (
                   <div

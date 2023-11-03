@@ -45,7 +45,7 @@ const Menu = ({
         }
       >
         <div className="flex items-center justify-between lg:hidden">
-          {aTokenExists ? (
+          {aTokenExists && dataUser?.full_name ? (
             <article className="flex items-start justify-center p-4 gap-4">
               <figure className="w-[70px] h-[70px] rounded-full">
                 <Image
@@ -188,7 +188,7 @@ const Menu = ({
             Sobre nosotros
           </Link>
         </li>
-        {aTokenExists && (
+        {dataUser?.full_name && (
           <li
             onClick={changeViewMiAccount}
             className="flex gap-1 items-center justify-center cursor-pointer lg:hidden"
@@ -197,7 +197,7 @@ const Menu = ({
             Mi cuenta
           </li>
         )}
-        {aTokenExists && (
+        {dataUser?.full_name && (
           <li
             onClick={logOut}
             className="flex gap-1 items-center justify-center cursor-pointer lg:hidden"

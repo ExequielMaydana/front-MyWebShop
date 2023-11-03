@@ -24,7 +24,7 @@ const ProductById = ({ entries, productsByCategory }) => {
     if (entries._id === onIdProductLoading) {
       setOnLoading(false);
     }
-  }, [entries]);
+  }, [entries, onIdProductLoading]);
 
   useEffect(() => {
     const swiper = new Swiper(swiperRef.current, {

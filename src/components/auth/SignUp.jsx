@@ -49,7 +49,14 @@ const SignUp = () => {
           </div>
           <div className="w-full flex items-center justify-end mt-[-3em]">
             <figure className="w-[200px] h-[300px]">
-              <Image src={personLogIn} alt="person" className="" />
+              <Image
+                width={1000}
+                height={1000}
+                src="/Images/Saly-14.svg"
+                alt="person"
+                className=""
+                priority
+              />
             </figure>
           </div>
         </article>
@@ -373,7 +380,9 @@ const SignUp = () => {
                         <div>
                           <p className="py-2">Foto seleccionada:</p>
                           <figure className="relative w-[100px] h-[100px] rounded-full">
-                            <img
+                            <Image
+                              width={1000}
+                              height={1000}
                               src={URL.createObjectURL(field.value)}
                               alt="Foto de perfil"
                               style={{
@@ -382,6 +391,7 @@ const SignUp = () => {
                                 borderRadius: "100%",
                               }}
                               className="shadow-lg object-cover"
+                              priority
                             />
                             <button
                               className="absolute top-0 right-0 bg-slateGray rounded-full text-error shadow-lg"
