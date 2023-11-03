@@ -5,7 +5,7 @@ import React from "react";
 const NotFound = () => {
   return (
     <Layout>
-      <div className="w-full flex flex-col items-center justify-center p-24">
+      <div className="w-full flex flex-col items-center justify-center p-12 lg:p-24">
         <h3 className="text-center w-[90%] lg:text-xl">
           <span className="text-3xl text-darkGray lg:text-6xl">UPS! </span>
           <br /> Parece que te has perdido.

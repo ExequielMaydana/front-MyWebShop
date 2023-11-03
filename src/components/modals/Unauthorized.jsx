@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 
 const Unauthorized = ({ message, setOnModal, onModal }) => {
-  console.log(message);
   return (
     <Wrapper>
       <Card>

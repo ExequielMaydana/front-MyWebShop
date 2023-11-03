@@ -1,26 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Menu from "./Menu";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import axios from "axios";
 
-const NavBar = ({
-  setViewDataUser,
-  dataUser,
-  setATokenExists,
-  aTokenExists,
-}) => {
+const NavBar = ({ setViewDataUser, setDataMyUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [dataUser, setDataUser] = useState({});
+  const [aTokenExists, setATokenExists] = useState(false);
 
   const token = Cookies.get("tokenUser");
-
   const router = useRouter();
 
   const openMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const getMyUser = async () => {
+    try {
+      await axios
+        .get(`${process.env.DOMAIN_PROD}/usuarios/me`, {
+          headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          setDataUser(res.data[0]);
+          setDataMyUser(res.data[0]);
+          setATokenExists(true);
+        });
+    } catch (error) {
+      console.log("error en peticion GET a MyUser", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) getMyUser();
+  }, []);
 
   const logOut = () => {
     openMenu();

@@ -51,7 +51,9 @@ const Menu = ({
                 <Image
                   width={500}
                   height={500}
-                  src={dataUser.profileImage?.imageUrl || ""}
+                  src={
+                    dataUser.profileImage ? dataUser.profileImage?.imageUrl : ""
+                  }
                   alt="imagen de perfil"
                   className="w-full h-full object-cover rounded-full shadow-md shadow-mediumPurple"
                 />
