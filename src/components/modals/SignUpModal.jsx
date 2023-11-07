@@ -14,7 +14,7 @@ const SignUpModal = ({ setOnModal, onModal, status }) => {
             <Image
               width={500}
               height={500}
-              src="/Images/alert.png"
+              src="/Images/alert.webp"
               alt=""
               className="w-full h-full object-cover"
             />

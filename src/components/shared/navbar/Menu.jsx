@@ -52,7 +52,9 @@ const Menu = ({
                   width={500}
                   height={500}
                   src={
-                    dataUser.profileImage ? dataUser.profileImage?.imageUrl : ""
+                    dataUser.profileImage
+                      ? dataUser.profileImage?.imageUrl
+                      : "/Images/not-found.webp"
                   }
                   alt="imagen de perfil"
                   className="w-full h-full object-cover rounded-full shadow-md shadow-mediumPurple"
