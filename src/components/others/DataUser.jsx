@@ -1,16 +1,19 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormEditDataUser from "./FormEditDataUser";
 import QuestionDeleteProfile from "../modals/QuestionDeleteProfile";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
-const DataUser = ({ dataMyUser, setViewDataUser, viewDataUser }) => {
+const DataUser = ({ setViewDataUser, viewDataUser }) => {
   const [changeEditProfile, setChangeEditProfile] = useState(false);
   const [onModalQuestion, setOnModalQuestion] = useState(false);
   const [onLoading, setOnLoading] = useState(false);
   const [onMessageError, setOnMessageError] = useState(false);
-  const token = Cookies.get("tokenUser");
+  const [dataMyUser, setDataMyUser] = useState({});
+
+  const token = useSelector((state) => state.tokenUser);
+
   const handleFileChange = (e) => {
     setOnLoading(true);
     const file = e.target.files[0];
@@ -37,6 +40,33 @@ const DataUser = ({ dataMyUser, setViewDataUser, viewDataUser }) => {
     }
   };
 
+  const getMyUser = async () => {
+    try {
+      const response = await fetch(`${process.env.DOMAIN_PROD}/usuarios/me`, {
+        method: "GET",
+        headers: {
+          "x-access-token": token,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setDataMyUser(data[0]);
+      } else {
+        console.error(
+          `Error en la solicitud: ${response.status} - ${response.statusText}`
+        );
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    if (token) {
+      getMyUser();
+    }
+  }, []);
   return (
     <>
       {onModalQuestion ? (
@@ -65,9 +95,13 @@ const DataUser = ({ dataMyUser, setViewDataUser, viewDataUser }) => {
                     <Image
                       width={500}
                       height={500}
-                      src={dataMyUser.profileImage?.imageUrl || ""}
+                      src={
+                        dataMyUser.profileImage?.imageUrl ||
+                        "/Images/not-found.webp"
+                      }
                       alt="imagen de perfil"
                       className="w-full h-full object-cover rounded-full shadow-sm shadow-darkGray"
+                      priority
                     />
                   )}
 

@@ -1,17 +1,17 @@
 export const imagesCardStart = [
   {
     id: 0,
-    imgUrl: "/Images/1.png",
+    imgUrl: "/Images/1.webp",
     title: "calzado",
   },
   {
     id: 1,
-    imgUrl: "/Images/2.png",
+    imgUrl: "/Images/2.webp",
     title: "indumentaria",
   },
   {
     id: 2,
-    imgUrl: "/Images/4.png",
+    imgUrl: "/Images/4.webp",
     title: "accesorios",
   },
 ];
@@ -19,41 +19,41 @@ export const imagesCardStart = [
 export const imagesBrands = [
   {
     id: 0,
-    imgUrl: "/logotypes_brands/logo_nike.png",
+    imgUrl: "/logotypes_brands/logo_nike.webp",
   },
   {
     id: 1,
-    imgUrl: "/logotypes_brands/logo_adidas.png",
+    imgUrl: "/logotypes_brands/logo_adidas.webp",
   },
   {
     id: 2,
-    imgUrl: "/logotypes_brands/logo_vans.png",
+    imgUrl: "/logotypes_brands/logo_vans.webp",
   },
   {
     id: 3,
-    imgUrl: "/logotypes_brands/logo_ripcurl.png",
+    imgUrl: "/logotypes_brands/logo_ripcurl.webp",
   },
   {
     id: 4,
-    imgUrl: "/logotypes_brands/logo_santacruz.png",
+    imgUrl: "/logotypes_brands/logo_santacruz.webp",
   },
   {
     id: 5,
-    imgUrl: "/logotypes_brands/logo_trasher.png",
+    imgUrl: "/logotypes_brands/logo_trasher.webp",
   },
 ];
 
 export const imagesRedes = [
   {
     id: 0,
-    imgUrl: "/icon_redes/whatsapp.png",
+    imgUrl: "/icon_redes/whatsapp.webp",
   },
   {
     id: 1,
-    imgUrl: "/icon_redes/facebook.png",
+    imgUrl: "/icon_redes/facebook.webp",
   },
   {
     id: 2,
-    imgUrl: "/icon_redes/twitter.png",
+    imgUrl: "/icon_redes/twitter.webp",
   },
 ];

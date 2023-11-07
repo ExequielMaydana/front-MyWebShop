@@ -27,15 +27,15 @@ export const dataGuideSizesShoes = [
     images: [
       {
         id: 0,
-        imgUrl: "/guide_sizes/tallespie1.jpg",
+        imgUrl: "/guide_sizes/tallespie1.webp",
       },
       {
         id: 1,
-        imgUrl: "/guide_sizes/tallespie2.jpg",
+        imgUrl: "/guide_sizes/tallespie2.webp",
       },
       {
         id: 2,
-        imgUrl: "/guide_sizes/tallespie3.jpg",
+        imgUrl: "/guide_sizes/tallespie3.webp",
       },
     ],
   },
@@ -54,11 +54,11 @@ export const arrayGuideSizesClothing = [
         images: [
           {
             id: 0,
-            imgUrl: "/guide_sizes/tallestorsoM.jpg",
+            imgUrl: "/guide_sizes/tallestorsoM.webp",
           },
           {
             id: 1,
-            imgUrl: "/guide_sizes/tallestorsoF.jpg",
+            imgUrl: "/guide_sizes/tallestorsoF.webp",
           },
         ],
         steps: [
@@ -86,11 +86,11 @@ export const arrayGuideSizesClothing = [
         images: [
           {
             id: 0,
-            imgUrl: "/guide_sizes/tallespiernasF.jpg",
+            imgUrl: "/guide_sizes/tallespiernasF.webp",
           },
           {
             id: 1,
-            imgUrl: "/guide_sizes/tallespiernasM.jpg",
+            imgUrl: "/guide_sizes/tallespiernasM.webp",
           },
         ],
         steps: [

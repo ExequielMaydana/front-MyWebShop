@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Menu from "./Menu";
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { clearToken } from "@/store/slice/tokenUser.slice";
 
-const NavBar = ({ setViewDataUser, setDataMyUser }) => {
+const NavBar = ({ setViewDataUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [dataUser, setDataUser] = useState({});
   const [aTokenExists, setATokenExists] = useState(false);
+  const token = useSelector((state) => state.tokenUser);
+  const dispatch = useDispatch();
 
-  const token = Cookies.get("tokenUser");
   const router = useRouter();
 
   const openMenu = () => {
@@ -21,20 +22,25 @@ const NavBar = ({ setViewDataUser, setDataMyUser }) => {
 
   const getMyUser = async () => {
     try {
-      await axios
-        .get(`${process.env.DOMAIN_PROD}/usuarios/me`, {
-          headers: {
-            "x-access-token": token,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          setDataUser(res.data[0]);
-          setDataMyUser(res.data[0]);
-          setATokenExists(true);
-        });
+      const response = await fetch(`${process.env.DOMAIN_PROD}/usuarios/me`, {
+        method: "GET",
+        headers: {
+          "x-access-token": token,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setDataUser(data[0]);
+        setATokenExists(true);
+      } else {
+        console.error(
+          `Error en la solicitud: ${response.status} - ${response.statusText}`
+        );
+      }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -46,7 +52,7 @@ const NavBar = ({ setViewDataUser, setDataMyUser }) => {
 
   const logOut = () => {
     openMenu();
-    Cookies.remove("tokenUser");
+    dispatch(clearToken());
     setATokenExists(false);
     router.push("/");
   };
@@ -99,20 +105,22 @@ const NavBar = ({ setViewDataUser, setDataMyUser }) => {
             )}
             {aTokenExists && (
               <div className="hidden lg:flex pl-4 relative group">
-                {dataUser?.profileImage && (
-                  <figure
-                    className="w-[50px] h-[50px] cursor-pointer profileImage"
-                    onMouseEnter={() => setIsHovered(true)}
-                  >
-                    <Image
-                      width={500}
-                      height={500}
-                      src={dataUser.profileImage?.imageUrl || ""}
-                      alt="imagen de perfil"
-                      className="w-full h-full object-cover rounded-full shadow-sm shadow-mediumPurple profileImage"
-                    />
-                  </figure>
-                )}
+                <figure
+                  className="w-[50px] h-[50px] cursor-pointer profileImage"
+                  onMouseEnter={() => setIsHovered(true)}
+                >
+                  <Image
+                    width={500}
+                    height={500}
+                    src={
+                      dataUser.profileImage?.imageUrl ||
+                      "/Images/not-found.webp"
+                    }
+                    alt="imagen de perfil"
+                    className="w-full h-full object-cover rounded-full shadow-sm shadow-mediumPurple profileImage"
+                  />
+                </figure>
+
                 {isHovered && (
                   <div
                     onMouseLeave={() => setIsHovered(false)}
@@ -126,7 +134,10 @@ const NavBar = ({ setViewDataUser, setDataMyUser }) => {
                         <Image
                           width={500}
                           height={500}
-                          src={dataUser.profileImage?.imageUrl || ""}
+                          src={
+                            dataUser.profileImage?.imageUrl ||
+                            "/Images/not-found.webp"
+                          }
                           alt="imagen de perfil"
                           className="w-full h-full object-cover aspect-square rounded-full shadow-lg shadow-mediumPurple"
                         />

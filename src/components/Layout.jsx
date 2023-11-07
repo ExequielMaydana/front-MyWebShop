@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "@/styles/Home.module.css";
-import NavBar from "./shared/navbar/NavBar";
 import Footer from "./shared/footer/Footer";
 import Head from "next/head";
 
-const Layout = ({ children, subtitle, setViewDataUser, setDataMyUser }) => {
+const Layout = ({ children, subtitle }) => {
   return (
     <>
       <Head>
@@ -24,12 +23,7 @@ const Layout = ({ children, subtitle, setViewDataUser, setDataMyUser }) => {
         <link rel="icon" href="" />
       </Head>
       <main className={styles.main}>
-        <NavBar
-          setViewDataUser={setViewDataUser}
-          setDataMyUser={setDataMyUser}
-        />
         <section className={styles.contentHome}>{children}</section>
-        <Footer />
       </main>
     </>
   );

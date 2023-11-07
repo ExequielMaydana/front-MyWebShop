@@ -10,7 +10,7 @@ const Unauthorized = ({ message, setOnModal, onModal }) => {
           <Image
             width={500}
             height={500}
-            src="/Images/401.jpg"
+            src="/Images/401.webp"
             alt=""
             className="w-full h-full object-cover"
           />

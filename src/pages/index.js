@@ -5,23 +5,11 @@ import SectionProducts from "@/components/products/SectionProducts";
 import CardBrand from "@/components/cards/CardBrand";
 import Layout from "@/components/Layout";
 import { imagesCardStart, imagesBrands } from "@/utils/arrayImages";
-import DataUser from "@/components/others/DataUser";
-import { useState } from "react";
 
 export default function Home({ imagesSlider, products }) {
-  const [dataMyUser, setDataMyUser] = useState({});
-  const [viewDataUser, setViewDataUser] = useState(false);
-
   return (
     <>
-      <Layout setViewDataUser={setViewDataUser} setDataMyUser={setDataMyUser}>
-        {viewDataUser && (
-          <DataUser
-            dataMyUser={dataMyUser}
-            setViewDataUser={setViewDataUser}
-            viewDataUser={viewDataUser}
-          />
-        )}
+      <Layout>
         <SliderImagesTop images={imagesSlider?.images} />
         <WeOffer />
         <article className="w-full flex flex-wrap items-center justify-around gap-8 px-4 mb-24 lg:px-8">

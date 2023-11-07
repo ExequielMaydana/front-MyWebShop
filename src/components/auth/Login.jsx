@@ -3,12 +3,12 @@ import Link from "next/link";
 import { Formik } from "formik";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
 import Image from "next/image";
 import iconGoogle from "../../../public/icons/google.svg";
-import personLogIn from "../../../public/Images/Saly-14.svg";
 import Unauthorized from "../modals/Unauthorized";
 import Loading from "../modals/Loading";
+import { useDispatch } from "react-redux";
+import { setTokenUser } from "@/store/slice/tokenUser.slice";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -18,6 +18,7 @@ const Login = () => {
   const showPassword = () => setPasswordVisible(!passwordVisible);
 
   const router = useRouter();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -91,10 +92,7 @@ const Login = () => {
                 .post(URL, values)
                 .then((res) => {
                   if (res) {
-                    Cookies.set("tokenUser", res.data.token, {
-                      expires: 1,
-                      secure: true,
-                    });
+                    dispatch(setTokenUser(res.data.token));
                     router.push("/");
                   }
                 })
