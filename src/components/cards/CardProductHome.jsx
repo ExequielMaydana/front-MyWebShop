@@ -29,6 +29,7 @@ const CardProductHome = ({
             src={img ? img : ""}
             alt="imagen producto"
             className="w-full h-full object-contain"
+            priority
           />
         </figure>
         <div className="absolute bottom-4 left-4 max-w-full flex flex-col gap-2">

@@ -103,7 +103,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   <span className="font-medium pr-1">
                     1° Mirá nuestros productos:
@@ -112,7 +112,7 @@ const PreguntasFrecuentes = () => {
                   tu búsqueda con nuestros filtros de productos personalizados.
                 </p>
               </li>
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   <span className="font-medium pr-1">
                     2° Agregá al carrito lo que más te guste:
@@ -120,7 +120,7 @@ const PreguntasFrecuentes = () => {
                   Seleccioná tus productos deseados y agregalos al carrito.
                 </p>
               </li>
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   <span className="font-medium pr-1">
                     3° Finalizá tu compra:
@@ -130,7 +130,7 @@ const PreguntasFrecuentes = () => {
                   la parte superior de la página.
                 </p>
               </li>
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   <span className="font-medium pr-1">4° Pago:</span> Completá el
                   formulario con tus datos personales, método de entrega y datos
@@ -158,7 +158,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Tus datos personales están resguardados y no serán utilizados
                   para otros fines que no sean el de procesamiento de tu compra.
@@ -187,7 +187,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Para cancelar tu compra debes enviar un mail a
                   <span className="text-slateBlue">
@@ -234,19 +234,19 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   <span className="font-medium pr-1">Tarjeta de crédito:</span>
                   Aprovechá las cuotas sin interés vigentes.
                 </p>
               </li>
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   <span className="font-medium pr-1">Mercado Pago:</span>{" "}
                   Aplican todas las promociones disponibles en Mercado Pago.
                 </p>
               </li>
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   <span className="font-medium pr-1">Efectivo:</span>
                   Podes abonar en cualquier sucursal de Rapipago, Pago Fácil o
@@ -278,7 +278,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   El stock estará reservado por 2 días hábiles desde la
                   confirmación del pedido independientemente de la fecha de
@@ -309,7 +309,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Una vez que tu pago fue acreditado recibirás un correo
                   electrónico con la confirmación, luego de esto iniciaremos el
@@ -353,7 +353,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Sí, cualquier persona de mayor de edad puede recibir la
                   mercadería siempre que se encuentre en el domicilio de entrega
@@ -383,7 +383,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   La empresa de correos dejará un aviso de visita y volverá al
                   día siguiente nuevamente. Si en la segunda visita que realiza
@@ -422,7 +422,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Las entregas de pedidos se realizan de lunes a viernes de 8:00
                   a 20:00. No se entregan pedidos los días domingos ni feriados,
@@ -452,7 +452,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Podes modificar tu dirección de entrega antes de concluir con
                   un nuevo proceso de compra. Si querés cambiar la dirección de
@@ -489,7 +489,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Una vez que el pedido fue despachado por correo , recibirás un
                   mail con el número de tracking de su pedido para poder
@@ -519,7 +519,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   No es posible establecer una fecha exacta de entrega de tu
                   pedido.
@@ -559,7 +559,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Si recibiste un producto distinto al solicitado en tu compra
                   online, por favor contáctate vía mail a
@@ -599,7 +599,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Si el producto presenta una falla de fábrica podes contactarte
                   vía mail a
@@ -648,7 +648,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   El horario de Atención al cliente es de lunes a viernes de 9 a
                   20hs, sábados de 9 a 17hs y feriados de 8 a 13hs
@@ -675,7 +675,7 @@ const PreguntasFrecuentes = () => {
                   : "sublist"
               }
             >
-              <li>
+              <li className="w-full flex items-start justify-start text-start">
                 <p>
                   Puedes contactarnos a través de la dirección de correo
                   <span className="text-slateBlue">

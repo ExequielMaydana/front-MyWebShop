@@ -17,7 +17,7 @@ export default ProductByType;
 
 export async function getServerSideProps({ params }) {
   const { product_type } = params;
-  const apiUrl = `${process.env.DOMAIN_PROD}/productos/search?category=indumentaria&product_type=${product_type}`;
+  const apiUrl = `${process.env.DOMAIN_PROD}/productos/search?category=accesorios&product_type=${product_type}`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();

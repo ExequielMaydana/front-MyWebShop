@@ -3,7 +3,6 @@ import LayoutViewAll from "@/components/LayoutViewAll";
 import React from "react";
 
 const Accesorios = ({ products }) => {
-  console.log(products);
   return (
     <Layout>
       <LayoutViewAll products={products} subRoute="Accesorios"></LayoutViewAll>
