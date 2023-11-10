@@ -37,10 +37,6 @@ export const imagesBrands = [
     id: 4,
     imgUrl: "/logotypes_brands/logo_santacruz.webp",
   },
-  {
-    id: 5,
-    imgUrl: "/logotypes_brands/logo_trasher.webp",
-  },
 ];
 
 export const imagesRedes = [
