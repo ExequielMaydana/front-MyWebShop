@@ -12,7 +12,7 @@ const SubMenuAccessories = ({ openDropDownAccesories }) => {
         </li>
       ))}
       <li>
-        <Link href="#" className="w-full h-full">
+        <Link href="/accesorios" className="w-full h-full">
           Ver todo
         </Link>
       </li>
