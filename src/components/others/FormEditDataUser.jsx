@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React from "react";
-import Cookies from "js-cookie";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const FormEditDataUser = ({
   dataUser,
@@ -9,6 +9,8 @@ const FormEditDataUser = ({
   changeEditProfile,
   getMyUser,
 }) => {
+  const token = useSelector((state) => state.tokenUser);
+
   return (
     <article className="w-full">
       <Formik
@@ -42,12 +44,10 @@ const FormEditDataUser = ({
           return errors;
         }}
         onSubmit={(values) => {
-          const tokenUser = Cookies.get("tokenUser");
-
           axios
             .put(`${process.env.DOMAIN_PROD}/usuarios/me`, values, {
               headers: {
-                "x-access-token": tokenUser,
+                "x-access-token": token,
                 "Content-Type": "application/json",
               },
             })

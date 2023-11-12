@@ -1,7 +1,8 @@
+import { clearToken } from "@/store/slice/tokenUser.slice";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 const QuestionDeleteProfile = ({
@@ -10,7 +11,9 @@ const QuestionDeleteProfile = ({
   setViewDataUser,
   viewDataUser,
 }) => {
-  const token = Cookies.get("tokenUser");
+  const token = useSelector((state) => state.tokenUser);
+  const dispatch = useDispatch();
+
   const router = useRouter();
   const deleteProfile = () => {
     axios
@@ -22,8 +25,8 @@ const QuestionDeleteProfile = ({
       .then((res) => {
         setOnModal(!onModal);
         setViewDataUser(!viewDataUser);
-        Cookies.remove("tokenUser");
-        router.push("/auth/registrarse");
+        dispatch(clearToken());
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
