@@ -5,12 +5,15 @@ import Menu from "./Menu";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { clearToken } from "@/store/slice/tokenUser.slice";
+import axios from "axios";
 
 const NavBar = ({ setViewDataUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [dataUser, setDataUser] = useState({});
   const [aTokenExists, setATokenExists] = useState(false);
+  const [nameProductSearch, setNameProductSearch] = useState("");
+  const [productsBySearch, setProductsBySearch] = useState([]);
   const token = useSelector((state) => state.tokenUser);
   const dispatch = useDispatch();
 
@@ -20,35 +23,33 @@ const NavBar = ({ setViewDataUser }) => {
     setIsOpen(!isOpen);
   };
 
-  const getMyUser = async () => {
-    try {
-      const response = await fetch(`${process.env.DOMAIN_PROD}/usuarios/me`, {
-        method: "GET",
-        headers: {
-          "x-access-token": token,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setDataUser(data[0]);
-        setATokenExists(true);
-      } else {
-        console.error(
-          `Error en la solicitud: ${response.status} - ${response.statusText}`
-        );
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
     if (token) {
-      getMyUser();
+      axios
+        .get(`${process.env.DOMAIN_PROD}/usuarios/me`, {
+          headers: {
+            "x-access-token": token,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          setDataUser(res.data[0]);
+          setATokenExists(true);
+        })
+        .catch((err) => console.log(err));
     }
-  }, []);
+  }, [token]);
+
+  useEffect(() => {
+    if (nameProductSearch.length > 0) {
+      axios
+        .get(
+          `${process.env.DOMAIN_PROD}/productos/searchbyname?name=${nameProductSearch}`
+        )
+        .then((res) => setProductsBySearch(res.data))
+        .catch((err) => console.log(err));
+    }
+  }, [nameProductSearch]);
 
   const logOut = () => {
     openMenu();
@@ -82,14 +83,34 @@ const NavBar = ({ setViewDataUser }) => {
               />
             </Link>
           </figure>
-          <div className="hidden lg:flex items-center justify-center gap-1 text-white w-1/3 h-9">
+          <div className="hidden lg:flex items-center justify-center gap-1 text-white w-1/3 h-9 relative">
             <input
               type="text"
               name="input_search"
               placeholder="¿Qué estás buscando?"
+              onChange={(e) => setNameProductSearch(e.target.value)}
               className="w-full h-full border-none outline-none rounded-lg ps-2 text-fontParagraph text-black"
             />
-            <i className="bx bx-search p-2 grid items-center text-center cursor-pointer bg-mediumPurple rounded-lg text-lg"></i>
+            <i className="bx bx-search cursor-pointer text-black relative top-0 right-8 font-bold"></i>
+
+            {productsBySearch.length > 0 && nameProductSearch.length > 0 && (
+              <div className="absolute top-[2.5em] left-0 w-[390px] h-[200px] p-2 bg-white rounded-lg overflow-x-auto z-[999]">
+                <ul className="w-full text-blackMy">
+                  {productsBySearch.map((product) => (
+                    <Link href={`/product/${product._id}`} key={product._id}>
+                      <li
+                        onClick={() => {
+                          setNameProductSearch("");
+                          setProductsBySearch([]);
+                        }}
+                      >
+                        {product.name}
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
           <article className="flex items-center justify-center gap-2 text-white">
             <Link href="#" className="text-lg s:text-3xl mt-1">
@@ -134,16 +155,21 @@ const NavBar = ({ setViewDataUser }) => {
                         <Image
                           width={500}
                           height={500}
-                          src={
-                            dataUser.profileImage?.imageUrl ||
-                            "/Images/not-found.webp"
-                          }
+                          src={dataUser.profileImage?.imageUrl}
                           alt="imagen de perfil"
                           className="w-full h-full object-cover aspect-square rounded-full shadow-lg shadow-mediumPurple"
                         />
                       </figure>
                     ) : (
-                      <figure></figure>
+                      <figure className="w-[80px] rounded-full">
+                        <Image
+                          width={500}
+                          height={500}
+                          src={"/Images/not-found.webp"}
+                          alt="imagen de perfil"
+                          className="w-full h-full object-cover aspect-square rounded-full shadow-lg shadow-mediumPurple"
+                        />
+                      </figure>
                     )}
                     <h2 className="text-black">
                       {" "}
@@ -175,14 +201,33 @@ const NavBar = ({ setViewDataUser }) => {
           </article>
         </div>
 
-        <div className="w-full flex items-center lg:hidden">
+        <div className="relative w-full flex items-center lg:hidden">
           <input
             type="text"
             name="input_search"
             placeholder="¿Qué estás buscando?"
+            onChange={(e) => setNameProductSearch(e.target.value)}
             className="w-full h-7 border-none outline-none rounded-lg ps-2 text-fontParagraph text-black"
           />
           <i className="bx bx-search cursor-pointer text-black relative top-0 right-6 font-bold"></i>
+          {productsBySearch.length > 0 && nameProductSearch.length > 0 && (
+            <div className="absolute top-[2em] w-full h-[200px] p-2 bg-white rounded-lg overflow-x-auto z-[999]">
+              <ul className="w-full">
+                {productsBySearch.map((product) => (
+                  <Link href={`/product/${product._id}`} key={product._id}>
+                    <li
+                      onClick={() => {
+                        setNameProductSearch("");
+                        setProductsBySearch([]);
+                      }}
+                    >
+                      {product.name}
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <Menu

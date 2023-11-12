@@ -29,6 +29,7 @@ const DataUser = ({ setViewDataUser, viewDataUser }) => {
         })
         .then((response) => {
           setOnLoading(false);
+          getMyUser();
         })
         .catch((error) => {
           setOnMessageError(true);
