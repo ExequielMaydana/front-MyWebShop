@@ -1,17 +1,22 @@
 import Layout from "@/components/Layout";
 import React, { useEffect, useRef, useState } from "react";
-import { imagesRedes } from "@/utils/arrayImages";
 import Image from "next/image";
 import CardProductHome from "@/components/cards/CardProductHome";
 import Swiper from "swiper/bundle";
 import SwiperProductId from "@/components/products/SwiperProductId";
 import Loading from "@/components/modals/Loading";
+import Link from "next/link";
 
 const ProductById = ({ entries, productsByCategory }) => {
   const swiperRef = useRef(null);
   const [onLoading, setOnLoading] = useState(false);
   const [onIdProductLoading, setOnIdProductLoading] = useState("");
   const [sizeSelected, setSizeSelected] = useState("");
+  const [productUrl, setProductUrl] = useState("");
+
+  useEffect(() => {
+    setProductUrl(window.location.href);
+  }, []);
 
   const productsOfInterest = productsByCategory.products?.filter(
     (product) => product._id !== entries._id
@@ -42,6 +47,34 @@ const ProductById = ({ entries, productsByCategory }) => {
       swiper.destroy();
     };
   }, []);
+
+  const imagesRedes = [
+    {
+      id: 0,
+      imgUrl: "/icon_redes/whatsapp.webp",
+      shareUrl: `https://wa.me/?text=${encodeURIComponent(
+        `¡Mira este increíble producto: ${entries.name}! ${productUrl}`
+      )}`,
+    },
+    {
+      id: 1,
+      imgUrl: "/icon_redes/facebook.webp",
+      shareUrl: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        productUrl
+      )}&quote=${encodeURIComponent(
+        `¡Mira este increíble producto: ${entries.name}!`
+      )}`,
+    },
+    {
+      id: 2,
+      imgUrl: "/icon_redes/twitter.webp",
+      shareUrl: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+        productUrl
+      )}&text=${encodeURIComponent(
+        `¡Mira este increíble producto: ${entries.name}!`
+      )}`,
+    },
+  ];
 
   return (
     <>
@@ -104,15 +137,22 @@ const ProductById = ({ entries, productsByCategory }) => {
                   <b className="text-xl">Comparte</b>
                   <div className="flex items-center justify-center gap-4">
                     {imagesRedes.map((img) => (
-                      <figure key={img.id} className="w-[30px] cursor-pointer">
-                        <Image
-                          width={500}
-                          height={500}
-                          src={img.imgUrl}
-                          alt="icon"
-                          className="w-full h-full object-cover"
-                        />
-                      </figure>
+                      <Link
+                        key={img.id}
+                        href={img.shareUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <figure className="w-[30px] cursor-pointer">
+                          <Image
+                            width={500}
+                            height={500}
+                            src={img.imgUrl}
+                            alt="icon"
+                            className="w-full h-full object-cover"
+                          />
+                        </figure>
+                      </Link>
                     ))}
                   </div>
                 </li>

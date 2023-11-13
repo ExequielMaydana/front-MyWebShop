@@ -1,21 +1,21 @@
 import Link from "next/link";
 import React from "react";
+import { itemsHelp } from "../../../utils/dataSubMenus";
 
-const SubMenuHelp = ({ openDropHelp }) => {
+const SubMenuHelp = ({ openDropHelp, setOpenDropHelp, isOpen, setIsOpen }) => {
   return (
     <ul className={openDropHelp ? "sub__menuOpen" : "sub__menu"}>
-      <li>
-        <Link href="/como-comprar">¿Cómo comprar?</Link>
-      </li>
-      <li>
-        <Link href="/medir-talle">¿Cómo medir tu talle?</Link>
-      </li>
-      <li>
-        <Link href="/envios">Envios</Link>
-      </li>
-      <li>
-        <Link href="/contacto">Contactate</Link>
-      </li>
+      {itemsHelp.map((item) => (
+        <li
+          key={item.id}
+          onClick={() => {
+            setOpenDropHelp(false);
+            isOpen && setIsOpen(false);
+          }}
+        >
+          <Link href={`/${item.link}`}>{item.title}</Link>
+        </li>
+      ))}
     </ul>
   );
 };

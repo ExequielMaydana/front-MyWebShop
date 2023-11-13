@@ -28,3 +28,10 @@ export const itemsMenuMarket = [
   { id: 4, title: "Santa Cruz", link: "santa cruz" },
   { id: 5, title: "Rip Curl", link: "rip curl" },
 ];
+
+export const itemsHelp = [
+  { id: 0, title: "¿Cómo comprar?", link: "como-comprar" },
+  { id: 1, title: "¿Cómo medir tu talle?", link: "medir-talle" },
+  { id: 2, title: "Envios", link: "envios" },
+  { id: 3, title: "Contactate", link: "contacto" },
+];

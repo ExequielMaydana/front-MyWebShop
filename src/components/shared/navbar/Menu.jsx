@@ -11,6 +11,7 @@ import SubMenuHelp from "./SubMenuHelp";
 
 const Menu = ({
   isOpen,
+  setIsOpen,
   openMenu,
   dataUser,
   aTokenExists,
@@ -71,6 +72,9 @@ const Menu = ({
               <div className="flex flex-col">
                 <p className="text-white">Ingresa a tu cuenta</p>
                 <Link
+                  onClick={() => {
+                    isOpen && setIsOpen(false);
+                  }}
                   href="/auth/iniciar-sesion"
                   className="text-white border border-darkGray rounded-lg bg-mediumPurple mt-2 flex items-center justify-center text-center"
                 >
@@ -86,7 +90,12 @@ const Menu = ({
         </div>
 
         <ul className="w-full flex flex-col pl-3 gap-5 mb-1 text-white text-sm s:text-base lg:flex-row lg:gap-3">
-          <li className="relative cursor-pointer">
+          <li
+            className="relative cursor-pointer"
+            onClick={() => {
+              isOpen && setIsOpen(false);
+            }}
+          >
             <Link href="/" className="flex gap-1 lg:text-sm" onClick={openMenu}>
               Inicio
             </Link>
@@ -104,7 +113,12 @@ const Menu = ({
               </article>
             </div>
 
-            <SubMenusClothing openDropDownOne={openDropDownOne} />
+            <SubMenusClothing
+              openDropDownOne={openDropDownOne}
+              setOpenDropDownOne={setOpenDropDownOne}
+              setIsOpen={setIsOpen}
+              isOpen={isOpen}
+            />
           </li>
           <li
             className="relative cursor-pointer"
@@ -120,7 +134,12 @@ const Menu = ({
               </article>
             </div>
 
-            <SubMenuShoes openDropDownShoes={openDropDownShoes} />
+            <SubMenuShoes
+              openDropDownShoes={openDropDownShoes}
+              setOpenDropDownShoes={setOpenDropDownShoes}
+              setIsOpen={setIsOpen}
+              isOpen={isOpen}
+            />
           </li>
           <li
             className="relative cursor-pointer"
@@ -139,25 +158,11 @@ const Menu = ({
 
             <SubMenuAccessories
               openDropDownAccesories={openDropDownAccesories}
+              setOpenDropDownAccesories={setOpenDropDownAccesories}
+              setIsOpen={setIsOpen}
+              isOpen={isOpen}
             />
           </li>
-          {/* <li
-            className="relative cursor-pointer"
-            onClick={() => setOpenDropDownMarket(!openDropDownMarket)}
-          >
-            <div className="flex items-center gap-1">
-              <span className="lg:text-sm">Marcas</span>
-              <article
-                className={
-                  openDropDownMarket ? "icon__row-active" : "icon__row"
-                }
-              >
-                <i className="bx bx-chevron-right"></i>
-              </article>
-            </div>
-
-            <SubMenuMarkets openDropDownMarket={openDropDownMarket} />
-          </li> */}
         </ul>
         <hr className="w-4/5 border-solid	border-slateGray opacity-25 lg:hidden" />
       </nav>
@@ -178,7 +183,12 @@ const Menu = ({
             </article>
           </div>
 
-          <SubMenuHelp openDropHelp={openDropHelp} />
+          <SubMenuHelp
+            openDropHelp={openDropHelp}
+            setOpenDropHelp={setOpenDropHelp}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
         </li>
         <li>
           <Link

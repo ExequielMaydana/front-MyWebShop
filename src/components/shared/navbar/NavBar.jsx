@@ -232,6 +232,7 @@ const NavBar = ({ setViewDataUser }) => {
 
         <Menu
           token={token}
+          setIsOpen={setIsOpen}
           isOpen={isOpen}
           openMenu={openMenu}
           dataUser={dataUser}
