@@ -32,6 +32,8 @@ export default function Document() {
           rel="stylesheet"
           href="https://unpkg.com/swiper/swiper-bundle.min.css"
         />
+        <link rel="icon" href="/favicon.ico" />
+        <title>ClosetWithoutGender</title>
       </Head>
       <body>
         <Main />
